@@ -1,16 +1,15 @@
-import './App.css'
-import {Button} from "@/components/ui/button.jsx";
+import Navigation from "@/components/Navigation/Navigation.jsx";
+import HeroSectionSection from "@/components/HeroSection/HeroSectionSection.jsx";
+import SolarEnergyProduction from "@/components/SolarEnergyProduction.jsx";
 
 function App() {
 
   return (
     <>
-
+        <Navigation/>
         <main>
-            <h1 className="text-3xl font-bold underline bg-amber-200">
-                Hello world!
-            </h1>
-            <Button>hello</Button>
+            <HeroSectionSection/>
+            {/*<SolarEnergyProduction/>*/}
         </main>
     </>
   )
