@@ -5,7 +5,7 @@ const Tab =(props)=>{
         <Button
             key={props.tab.value}
             variant={props.selectedTab === props.tab.value ? "default" : "outline"}
-            onClick={(e) => props.onClick(props.tab.value)}
+            onClick={(e1) => props.onClick(props.tab.value)}
         >
             {props.tab.label}
         </Button>
