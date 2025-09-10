@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation/Navigation.jsx";
-import HeroSectionSection from "@/components/HeroSection/HeroSectionSection.jsx";
+import HeroSection from "@/components/HeroSection/HeroSectionSection.jsx";
 import SolarEnergyProduction from "@/components/SolarEnergyProduction.jsx";
+
 
 function App() {
 
@@ -8,8 +9,8 @@ function App() {
     <>
         <Navigation/>
         <main>
-            <HeroSectionSection/>
-            {/*<SolarEnergyProduction/>*/}
+            <HeroSection/>
+            <SolarEnergyProduction/>
         </main>
     </>
   )

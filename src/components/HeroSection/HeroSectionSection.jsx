@@ -1,7 +1,7 @@
 import imgWindTurbine from "./wind-turbine.png";
 import { Sailboat, Shield, Triangle, Wind } from "lucide-react";
 
-const HeroSectionSection = () => {
+const HeroSection = () => {
   return (
       <div className="bg-white px-12 font-[Inter]">
       {/* Navigation Bar */}
@@ -76,4 +76,4 @@ const HeroSectionSection = () => {
   );
 };
 
-export default HeroSectionSection;
+export default HeroSection;
