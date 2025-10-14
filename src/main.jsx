@@ -1,21 +1,24 @@
 import { StrictMode } from 'react'
 import {createRoot} from "react-dom/client";
 import './index.css'
-import App from './App.jsx'
 import {BrowserRouter, Route, Routes} from "react-router";
-import HomePage from "@/pages/home.page.jsx";
-import DashboardPage from "@/pages/dashboard.page.jsx";
+import HomePage from "@/pages/home/home.page.jsx";
+import DashboardPage from "@/pages/dashboard/dashboard.page.jsx";
 import RootLayout from "@/layout/root.layout.jsx";
+import { store } from '@/lib/redux/store.jsx'
+import { Provider } from 'react-redux'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-      <BrowserRouter>
-          <Routes>
-              <Route element={<RootLayout/>} >
-                  <Route path="/" element={<HomePage/>} />
-                  <Route path="/dashboard" element={<DashboardPage/>} />
-              </Route>
+      <Provider store={store}>
+          <BrowserRouter>
+              <Routes>
+                  <Route element={<RootLayout/>} >
+                      <Route path="/" element={<HomePage/>} />
+                      <Route path="/dashboard" element={<DashboardPage/>} />
+                  </Route>
 
-          </Routes>
-      </BrowserRouter>
+              </Routes>
+          </BrowserRouter>
+      </Provider>
   </StrictMode>,
 )

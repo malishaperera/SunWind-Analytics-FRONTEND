@@ -1,6 +1,6 @@
 import Navigation from "@/components/Navigation/Navigation.jsx";
-import HeroSection from "@/components/HeroSection/HeroSectionSection.jsx";
-import SolarEnergyProduction from "@/components/SolarEnergyProduction.jsx";
+import HeroSection from "@/pages/home/components/HeroSection/index.jsx";
+import SolarEnergyProduction from "@/pages/home/components/SolarEnergyProduction.jsx";
 
 
 function App() {
