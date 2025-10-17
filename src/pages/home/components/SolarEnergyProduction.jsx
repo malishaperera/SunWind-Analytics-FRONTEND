@@ -1,7 +1,10 @@
-// import { useState } from "react";
 import Tab from "./Tab.jsx";
 import EnergyProductionCards from "./EnergyProductionCards.jsx";
 import {useSelector} from "react-redux";
+// import {getEnergyGenerationRecordBySolarUnit} from "@/lib/api/energy-generation-records.js";
+// import {useEffect, useState} from "react";
+// import {data} from "react-router";
+import {useGetEnergyGenerationRecordsBySolarUnitQuery} from "@/lib/redux/query.js";
 
 const SolarEnergyProduction = () => {
   const energyProductionData = [
@@ -33,6 +36,40 @@ const SolarEnergyProduction = () => {
     }
   });
 
+  // const [isLoading,setLoading] = useState(true);
+  // const [energyGenerationRecord, setEnergyGenerationRecord] = useState([]);
+  // const [error, setError] = useState(null);
+  // const [isError, setIsError] = useState(false);
+  //
+  //
+  // useEffect(() => {
+  //   getEnergyGenerationRecordBySolarUnit("68e7365b52ca63b0fc3c819b")
+  //       .then((data) =>{
+  //         setEnergyGenerationRecord(data)
+  //       })
+  //       .catch((error) => {
+  //         setIsError(true);
+  //         setError(error);
+  //       })
+  //       .finally(()=>{
+  //         setLoading(false);
+  //       });
+  // }, []);
+  //
+  // console.log(energyGenerationRecord);
+
+  // const handleGetData = () => {
+  //   getEnergyGenerationRecordBySolarUnit("68e7365b52ca63b0fc3c819b")
+  // }
+
+
+  const { data, isLoading, isError, error } =
+      useGetEnergyGenerationRecordsBySolarUnitQuery("68e7365b52ca63b0fc3c819b");
+
+  console.log(data);
+
+
+
   return (
     <section className="px-12 font-[Inter] py-6">
       <div>
@@ -56,6 +93,11 @@ const SolarEnergyProduction = () => {
           );
         })}
       </div>
+      {/*<div className="mt-4">*/}
+      {/*  <Button onClick={handleGetData}>Get Data*/}
+
+      {/*  </Button>*/}
+      {/*</div>*/}
 
       <EnergyProductionCards
         energyProductionData={filteredEnergyProductionData}

@@ -9,7 +9,8 @@ export const uiSlice = createSlice({
     initialState,
     reducers: {
         switchHomeTab: (state, action) => {
-            state.value += action.payload;
+            console.log(action)
+            state.selectedHomeTab = action.payload;
         },
     },
 })

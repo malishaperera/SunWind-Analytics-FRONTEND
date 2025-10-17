@@ -5,7 +5,7 @@ import {BrowserRouter, Route, Routes} from "react-router";
 import HomePage from "@/pages/home/home.page.jsx";
 import DashboardPage from "@/pages/dashboard/dashboard.page.jsx";
 import RootLayout from "@/layout/root.layout.jsx";
-import { store } from '@/lib/redux/store.jsx'
+import { store } from '@/lib/redux/store.js'
 import { Provider } from 'react-redux'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
