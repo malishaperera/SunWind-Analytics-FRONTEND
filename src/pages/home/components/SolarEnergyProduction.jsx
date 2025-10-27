@@ -1,10 +1,8 @@
 import Tab from "./Tab.jsx";
 import EnergyProductionCards from "./EnergyProductionCards.jsx";
 import {useSelector} from "react-redux";
-// import {getEnergyGenerationRecordBySolarUnit} from "@/lib/api/energy-generation-records.js";
-// import {useEffect, useState} from "react";
-// import {data} from "react-router";
 import {useGetEnergyGenerationRecordsBySolarUnitQuery} from "@/lib/redux/query.js";
+import {format, toDate,} from "date-fns";
 
 const SolarEnergyProduction = () => {
   const energyProductionData = [
@@ -22,17 +20,27 @@ const SolarEnergyProduction = () => {
     { label: "Anomaly", value: "anomaly" },
   ];
 
-  // const [selectedTab, setSelectedTab] = useState(tabs[0].value);
   const selectedTab = useSelector((state) => state.ui.selectedHomeTab);
-  // const handleTabClick = (value) => {
-  //   setSelectedTab(value);
-  // };
 
-  const filteredEnergyProductionData = energyProductionData.filter((el) => {
-    if (selectedTab === "all") {
-      return true;
-    } else if (selectedTab === "anomaly") {
-      return el.hasAnomaly;
+  const { data, isLoading, isError, error } =
+      useGetEnergyGenerationRecordsBySolarUnitQuery(
+          {
+            id:"68fd0b0f527532dd82cbdc71",
+            groupBy:"date"
+          });
+  if (isLoading){
+    return <div>Loading ...</div>;
+  }
+  if (!data || isError){
+    return <div>Error: {error.message}</div>;
+  }
+
+  const  newEnergyProductionData = data.slice(0,7).map((el) => {
+    return {
+      day : format(toDate(el._id.date),"EEE"),
+      date: format(toDate(el._id.date),"MMM d"),
+      production: el.totalEnergy,
+      hasAnomaly: el.hasAnomaly
     }
   });
 
@@ -62,13 +70,73 @@ const SolarEnergyProduction = () => {
   //   getEnergyGenerationRecordBySolarUnit("68e7365b52ca63b0fc3c819b")
   // }
 
+  ////////////////////////////////
+  // const formattedData = data.map((el) => {
+  //   return {
+  //     ...el,
+  //     timestamp: toDate(el.timestamp),
+  //   };
+  // });
+  // const latestGenerationRecord = formattedData[0];
+  // const sevenDaysAgo = subDays(latestGenerationRecord.timestamp,6);
+  //
+  // const filteredData = formattedData.filter((el) => {
+  //   return el.timestamp >= sevenDaysAgo;
+  // });
+  //
+  // const mappedData = filteredData.map((el) =>{
+  //   return {
+  //     ...el,
+  //     date:format(el.timestamp,"yyyy-MM-dd"),
+  //   };
+  // });
+  //
+  // const groupedData = {};
+  //
+  // mappedData.forEach((el) => {
+  //   if (groupedData[el.date]) {
+  //     groupedData[el.date].push(el);
+  //   }else {
+  //     groupedData[el.date] = [];
+  //     groupedData[el.date].push(el);
+  //   }
+  // });
+  // const groupDataArray = Object.entries(groupedData);
+  //
+  // const calculateTotalProduction = (data) =>{
+  //   let total = 0;
+  //   data.forEach((el) => {
+  //     total += el.energyGenerated;
+  //   });
+  //   return total;
+  // }
+  //
+  // const newEnergyProductionData = groupDataArray.map(([date,data]) =>{
+  //
+  //   return{
+  //     day: format(toDate(date),"EEE"),
+  //     date: format(toDate(date),"MMM d"),
+  //     hasAnomaly: false,
+  //     production: calculateTotalProduction(data),
+  //   };
+  // });
+////////////////////////////////
 
-  const { data, isLoading, isError, error } =
-      useGetEnergyGenerationRecordsBySolarUnitQuery("68e7365b52ca63b0fc3c819b");
+  // const filteredEnergyProductionData = energyProductionData.filter((el) => {
+  //   if (selectedTab === "all") {
+  //     return true;
+  //   } else if (selectedTab === "anomaly") {
+  //     return el.hasAnomaly;
+  //   }
+  // });
 
-  console.log(data);
-
-
+  const filteredEnergyProductionData = newEnergyProductionData.filter((el) => {
+    if (selectedTab === "all") {
+      return true;
+    } else if (selectedTab === "anomaly") {
+      return el.hasAnomaly;
+    }
+  });
 
   return (
     <section className="px-12 font-[Inter] py-6">
@@ -93,12 +161,6 @@ const SolarEnergyProduction = () => {
           );
         })}
       </div>
-      {/*<div className="mt-4">*/}
-      {/*  <Button onClick={handleGetData}>Get Data*/}
-
-      {/*  </Button>*/}
-      {/*</div>*/}
-
       <EnergyProductionCards
         energyProductionData={filteredEnergyProductionData}
       />
