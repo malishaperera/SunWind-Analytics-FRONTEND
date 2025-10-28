@@ -22,7 +22,6 @@ createRoot(document.getElementById('root')).render(
                       <Route element={<DashboardLayout/>}>
                           <Route path="/dashboard" element={<DashboardPage/>} />
                       </Route>
-
                   </Route>
               </Routes>
           </BrowserRouter>

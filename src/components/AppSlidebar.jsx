@@ -17,27 +17,28 @@ import {
 } from "@/components/ui/sidebar"
 import {Link} from "react-router";
 
+
 // Menu items.
 const items = [
     {
         title: "Dashboard",
         url: "/dashboard",
-        icon: LayoutDashboard,
+        icon: <LayoutDashboard className="w-8 h-8" size={32}/>,
     },
     {
         title: "Anomaly",
         url: "/dashboard/anomaly",
-        icon: TriangleAlert,
+        icon: <TriangleAlert className="w-8 h-8"size={52}/>,
     },
     {
         title: "Analytics",
         url: "/dashboard/analytics",
-        icon: ChartLine,
+        icon: <ChartLine className="w-8 h-8"size={52}/>,
     },
     {
         title: "Users",
         url: "/dashboard/users",
-        icon: Users,
+        icon: <Users className="w-8 h-8"size={52}/>,
     },
 ]
 
@@ -52,8 +53,8 @@ export function AppSidebar() {
                             {items.map((item) => (
                                 <SidebarMenuItem key={item.title}>
                                     <SidebarMenuButton asChild>
-                                        <Link href={item.url}>
-                                            <item.icon  className="w-8 h-8"size={52}/>
+                                        <Link to={item.url}>
+                                            {item.icon}
                                             <span>{item.title}</span>
                                         </Link>
                                     </SidebarMenuButton>
