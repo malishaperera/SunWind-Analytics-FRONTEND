@@ -15,7 +15,8 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import {Link} from "react-router";
+import {Link, useLocation} from "react-router";
+import {cn} from "@/lib/utils.js";
 
 
 // Menu items.
@@ -43,22 +44,39 @@ const items = [
 ]
 
 export function AppSidebar() {
+
+    const SideBarTab = ({item}) =>{
+
+        let location = useLocation();
+        let isActive = location.pathname === item.url;
+        return(
+            <SidebarMenuItem key={item.url}>
+                <SidebarMenuButton asChild isActive={isActive}>
+                    <Link
+                        to={item.url}
+                        // className={cn(
+                        //     "flex flex-col items-center justify-center space-y-2 px-4 py-3 hover:bg-accent hover:text-accent-foreground rounded-lg",
+                        //     isActive ? "bg-accent text-accent-foreground" : "text-foreground"
+                        // )}
+                    >
+                        {item.icon}
+                        <span className="text-sm font-medium">{item.title}</span>
+                    </Link>
+                </SidebarMenuButton>
+            </SidebarMenuItem>
+        );
+    };
     return (
         <Sidebar>
             <SidebarContent>
                 <SidebarGroup>
-                    <SidebarGroupLabel className="text-xl font-bold text-foreground">Aelora</SidebarGroupLabel>
+                    <SidebarGroupLabel className="text-3xl font-bold text-foreground">
+                        <Link to="/">Aelora</Link>
+                    </SidebarGroupLabel>
                     <SidebarGroupContent>
-                        <SidebarMenu className="mt-4 text-xl">
+                        <SidebarMenu className="mt-4 text">
                             {items.map((item) => (
-                                <SidebarMenuItem key={item.title}>
-                                    <SidebarMenuButton asChild>
-                                        <Link to={item.url}>
-                                            {item.icon}
-                                            <span>{item.title}</span>
-                                        </Link>
-                                    </SidebarMenuButton>
-                                </SidebarMenuItem>
+                                <SideBarTab key={item.url} item={item}/>
                             ))}
                         </SidebarMenu>
                     </SidebarGroupContent>

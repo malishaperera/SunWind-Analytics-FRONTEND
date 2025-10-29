@@ -34,7 +34,7 @@ const SolarEnergyProduction = () => {
   if (!data || isError){
     return <div>Error: {error.message}</div>;
   }
-
+// mage
   const  newEnergyProductionData = data.slice(0,7).map((el) => {
     return {
       day : format(toDate(el._id.date),"EEE"),
