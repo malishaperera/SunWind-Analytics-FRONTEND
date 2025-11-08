@@ -1,8 +1,17 @@
 import {Card} from "@/components/ui/card.jsx";
 import {format, toDate} from "date-fns";
 import {Skeleton} from "@/components/ui/skeleton.jsx";
+import {useGetEnergyGenerationRecordsBySolarUnitQuery} from "@/lib/redux/query.js";
 
-const DataCard = ({ data, isLoading, isError, error, title ="Data Overview" }) => {
+const DataCard = ({ title ="Data Overview",solarUnitId }) => {
+
+    const { data, isLoading, isError, error } =
+        useGetEnergyGenerationRecordsBySolarUnitQuery({
+            id: solarUnitId,
+            groupBy: "date",
+            limit: 7,
+        });
+
     if (isLoading) {
         return (
             <Card className="rounded-md p-4">

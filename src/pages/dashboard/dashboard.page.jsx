@@ -1,16 +1,12 @@
-import { useGetEnergyGenerationRecordsBySolarUnitQuery } from "@/lib/redux/query";
 import DataCard from "./components/DataChart/DataCard.jsx";
 import DataChart from "@/pages/dashboard/components/DataChart/DataChart.jsx";
 
 
 const DashboardPage = () => {
-    const { data, isLoading, isError, error } =
-        useGetEnergyGenerationRecordsBySolarUnitQuery({
-            id: "68e4cd79378e876c4b84d3f9",
-            groupBy: "date",
-        });
 
-    if (isError || !data) return null;
+    const solarUnitId = "64a7f0c2e4b0f5b6c8d9e123"; // Example solar unit ID
+
+
 
     return (
         <main className="mt-4">
@@ -19,20 +15,14 @@ const DashboardPage = () => {
 
             <div className="mt-8">
                 <DataCard
-                    data={data}
-                    isLoading={isLoading}
-                    isError={isError}
-                    error={error}
+                    solarUnitId={solarUnitId}
                     title="Last 7 Days Energy Production"
                 />
             </div>
 
             <div className="mt-8">
                 <DataChart
-                    data={data}
-                    isLoading={isLoading}
-                    isError={isError}
-                    error={error}
+                    solarUnitId={solarUnitId}
                 />
             </div>
         </main>
