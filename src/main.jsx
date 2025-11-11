@@ -4,15 +4,17 @@ import "./index.css";
 import { BrowserRouter, Route, Routes } from "react-router";
 import HomePage from "@/pages/home/home.page.jsx";
 import DashboardPage from "@/pages/dashboard/dashboard.page.jsx";
-import RootLayout from "@/layout/root.layout.jsx";
+import RootLayout from "@/layouts/root.layout.jsx";
 import { store } from "@/lib/redux/store.js";
 import { Provider } from "react-redux";
-import MainLayout from "@/layout/main.layout.jsx";
-import DashboardLayout from "@/layout/dasboard.layout.jsx";
+import MainLayout from "@/layouts/main.layout.jsx";
+import DashboardLayout from "@/layouts/dasboard.layout.jsx";
 import { ClerkProvider } from "@clerk/clerk-react";
 import SignInPage from "@/pages/auth/sign-in-page.jsx";
 import SignUpPage from "@/pages/auth/sign-up-page.jsx";
-import ProtectedLayout from "@/layout/protected.layout.jsx";
+import ProtectedLayout from "@/layouts/protected.layout.jsx";
+import AuthorizedLayout from "@/layouts/authorized.layout.jsx";
+import AdminPage from "@/pages/admin/admin.page.jsx";
 
 // Import your Publishable Key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
@@ -36,6 +38,9 @@ createRoot(document.getElementById("root")).render(
               <Route element={<ProtectedLayout />}>
                 <Route element={<DashboardLayout />}>
                   <Route path="/dashboard" element={<DashboardPage />} />
+                </Route>
+                <Route element={<AuthorizedLayout/>}>
+                  <Route path="/admin/dashboard" element={<AdminPage />} />
                 </Route>
               </Route>
             </Route>
