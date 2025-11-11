@@ -1,30 +1,47 @@
-import { StrictMode } from 'react'
-import {createRoot} from "react-dom/client";
-import './index.css'
-import {BrowserRouter, Route, Routes} from "react-router";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import { BrowserRouter, Route, Routes } from "react-router";
 import HomePage from "@/pages/home/home.page.jsx";
 import DashboardPage from "@/pages/dashboard/dashboard.page.jsx";
 import RootLayout from "@/layout/root.layout.jsx";
-import { store } from '@/lib/redux/store.js'
-import { Provider } from 'react-redux'
+import { store } from "@/lib/redux/store.js";
+import { Provider } from "react-redux";
 import MainLayout from "@/layout/main.layout.jsx";
 import DashboardLayout from "@/layout/dasboard.layout.jsx";
+import { ClerkProvider } from "@clerk/clerk-react";
+import SignInPage from "@/pages/auth/sign-in-page.jsx";
+import SignUpPage from "@/pages/auth/sign-up-page.jsx";
+import ProtectedLayout from "@/layout/protected.layout.jsx";
 
-createRoot(document.getElementById('root')).render(
+// Import your Publishable Key
+const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+
+if (!PUBLISHABLE_KEY) {
+  throw new Error("Add your Clerk Publishable Key to the .env file");
+}
+
+createRoot(document.getElementById("root")).render(
   <StrictMode>
-      <Provider store={store}>
-          <BrowserRouter>
-              <Routes>
-                  <Route element={<RootLayout/>} >
-                      <Route element={<MainLayout/>}>
-                          <Route path="/" element={<HomePage/>} />
-                      </Route>
-                      <Route element={<DashboardLayout/>}>
-                          <Route path="/dashboard" element={<DashboardPage/>} />
-                      </Route>
-                  </Route>
-              </Routes>
-          </BrowserRouter>
-      </Provider>
-  </StrictMode>,
-)
+    <Provider store={store}>
+      <BrowserRouter>
+        <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+          <Routes>
+            <Route element={<RootLayout />}>
+              <Route path="/sign-in" element={<SignInPage />} />
+              <Route path="/sign-up" element={<SignUpPage />} />
+              <Route element={<MainLayout />}>
+                <Route path="/" element={<HomePage />} />
+              </Route>
+              <Route element={<ProtectedLayout />}>
+                <Route element={<DashboardLayout />}>
+                  <Route path="/dashboard" element={<DashboardPage />} />
+                </Route>
+              </Route>
+            </Route>
+          </Routes>
+        </ClerkProvider>
+      </BrowserRouter>
+    </Provider>
+  </StrictMode>
+);
