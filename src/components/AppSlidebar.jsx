@@ -54,11 +54,7 @@ export function AppSidebar() {
                 <SidebarMenuButton asChild isActive={isActive}>
                     <Link
                         to={item.url}
-                        // className={cn(
-                        //     "flex flex-col items-center justify-center space-y-2 px-4 py-3 hover:bg-accent hover:text-accent-foreground rounded-lg",
-                        //     isActive ? "bg-accent text-accent-foreground" : "text-foreground"
-                        // )}
-                    >
+                        >
                         {item.icon}
                         <span className="text-sm font-medium">{item.title}</span>
                     </Link>

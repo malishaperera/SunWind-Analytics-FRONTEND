@@ -1,6 +1,6 @@
 import DataCard from "./components/DataChart/DataCard.jsx";
 import DataChart from "@/pages/dashboard/components/DataChart/DataChart.jsx";
-import {useUser} from "@clerk/clerk-react";
+import { useUser } from "@clerk/clerk-react";
 import {useGetSolarUnitForUserQuery} from "@/lib/redux/query.js";
 
 const DashboardPage = () => {
