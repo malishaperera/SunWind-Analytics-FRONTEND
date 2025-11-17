@@ -19,6 +19,8 @@ import AdminLayout from "@/layouts/admin.layout.jsx";
 import SolarUnitsPage from "@/pages/admin/solar-units.page.jsx";
 import SolarUnitDetailPage from "@/pages/admin/solar-unit-detail.page.jsx";
 import SettingsPage from "@/pages/admin/settings.page.jsx";
+import SolarUnitEditPage from "@/pages/admin/solar-unit-edit.page.jsx";
+import SolarUnitCreatePage from "@/pages/admin/solar-unit-create.page.jsx";
 
 // Import your Publishable Key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
@@ -48,6 +50,8 @@ createRoot(document.getElementById("root")).render(
                     <Route path="/admin" element={<AdminPage />} />
                     <Route path="/admin/solar-units" element={<SolarUnitsPage />} />
                     <Route path="/admin/solar-units/:id" element={<SolarUnitDetailPage />} />
+                    <Route path="/admin/solar-units/:id/edit" element={<SolarUnitEditPage />} />
+                    <Route path="/admin/solar-units/create" element={<SolarUnitCreatePage />} />
                     <Route path="/admin/settings" element={<SettingsPage />} />
                   </Route>
                 </Route>
