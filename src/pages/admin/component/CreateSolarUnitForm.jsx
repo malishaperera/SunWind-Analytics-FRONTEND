@@ -13,6 +13,8 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select.jsx";
+import {DatePicker} from "@/components/ui/date-picker.jsx";
+import {useCreateSolarUnitMutation} from "@/lib/redux/query.js";
 
 const formSchema = z.object({
     serialNumber: z
@@ -39,12 +41,16 @@ const formSchema = z.object({
             resolver: zodResolver(formSchema),
         });
 
+        const [createSolarUnit,{isLoading: isCreatingSolarUnit}] = useCreateSolarUnitMutation();
+
     // 2. Define a submit handler.
-    function onSubmit(values) {
-        // Do something with the form values.
-        // ✅ This will be type-safe and validated.
-        console.log(values)
-    };
+    async function onSubmit(values) {
+        try{
+            await createSolarUnit(values).unwrap();
+        }catch (error){
+            console.error("Failed to create solar unit:", error);
+        }
+    }
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -68,6 +74,7 @@ const formSchema = z.object({
                         <FormItem>
                             <FormLabel>Installation Date</FormLabel>
                             <FormControl>
+                                {/*<DatePicker/>*/}
                                 <Input placeholder="Installation Date" {...field} />
                             </FormControl>
                             <FormMessage />
@@ -109,7 +116,7 @@ const formSchema = z.object({
                         </FormItem>
                     )}
                 />
-                <Button type="submit">Submit</Button>
+                <Button type="submit" disabled={isCreatingSolarUnit}>{isCreatingSolarUnit ? "Creating..." : "Create"}</Button>
             </form>
         </Form>
     )
