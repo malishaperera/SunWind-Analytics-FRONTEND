@@ -1,21 +1,20 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    selectedHomeTab: 'all',
-}
+    selectedDashboardTab: "all",
+};
 
 export const uiSlice = createSlice({
-    name: 'ui',
+    name: "ui",
     initialState,
     reducers: {
-        switchHomeTab: (state, action) => {
-            console.log(action)
-            state.selectedHomeTab = action.payload;
+        switchDashboardTab: (state, action) => {
+            console.log(action);
+            state.selectedDashboardTab = action.payload;
         },
     },
-})
+});
 
-// Action creators are generated for each case reducer function
-export const { switchHomeTab } = uiSlice.actions
+export const { switchDashboardTab } = uiSlice.actions;
 
-export default uiSlice.reducer
+export default uiSlice.reducer;
