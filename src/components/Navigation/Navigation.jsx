@@ -6,29 +6,21 @@ const Navigation = () => {
   return (
     <nav className={"px-12 py-6 flex justify-between items-center"}>
       <Link to="/" className={"flex items-center gap-3"}>
-        <div
-          className={
-            "w-10 h-10 rounded-full bg-lime-400 flex justify-center items-center"
-          }
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="lucide lucide-wind-icon lucide-wind logo block"
-          >
-            <path d="M12.8 19.6A2 2 0 1 0 14 16H2" />
-            <path d="M17.5 8a2.5 2.5 0 1 1 2 4H2" />
-            <path d="M9.8 4.4A2 2 0 1 1 11 8H2" />
-          </svg>
+        <div className="w-15 h-15 rounded-full bg-purple-100 flex justify-center items-center">
+          <img
+              src="/src/assets/logo-1.png"
+              alt="SunWind Analytics Logo"
+              className="w-28 h-28 object-contain"
+          />
         </div>
-        <span className="font-[Inter] text-xl font-semibold">Aelora</span>
+        {/*<span className="font-[Inter] text-xl font-semibold">SunWind-Analytics</span>*/}
+        <span className="font-[Inter] text-xl font-semibold">
+          <span className="text-orange-500">Sun</span>
+          <span className="text-blue-400">Wind</span>
+          <span className="text-gray-400">-</span>
+          <span className="text-cyan-400">Analytics</span>
+        </span>
+
       </Link>
 
       <div className={"flex items-center gap-12"}>
