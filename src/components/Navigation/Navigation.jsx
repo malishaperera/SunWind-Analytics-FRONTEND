@@ -6,7 +6,7 @@ const Navigation = () => {
   return (
     <nav className={"px-12 py-6 flex justify-between items-center"}>
       <Link to="/" className={"flex items-center gap-3"}>
-        <div className="w-15 h-15 rounded-full bg-purple-100 flex justify-center items-center">
+        <div className="w-15 h-15 rounded-full bg-indigo-100 flex justify-center items-center">
           <img
               src="/src/assets/logo-1.png"
               alt="SunWind Analytics Logo"

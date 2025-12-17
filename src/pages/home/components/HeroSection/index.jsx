@@ -1,50 +1,49 @@
 import imgWindTurbine from "./wind-turbine.png";
-import { Sailboat, Shield, Triangle, Wind } from "lucide-react";
+import { Sailboat, Shield, Triangle, Sun } from "lucide-react";
 
 const HeroSection = () => {
   return (
-      <div className="bg-white px-12 font-[Inter]">
+    <div className="bg-gradient-to-b from-white to-slate-50 px-6 md:px-12 font-[Inter]">
       {/* Navigation Bar */}
-      <nav className={"flex flex-wrap items-center justify-between py-6"}>
-        <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-lime-400 sm:h-12 sm:w-12">
-            <Wind className="h-5 w-5 text-black sm:h-6 sm:w-6" />
+      <nav className="flex flex-wrap items-center justify-between py-6 gap-6">
+        <div className="flex items-center gap-3">
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-100">
+            <Sun className="h-5 w-5 text-indigo-600" />
           </div>
-          <span className="text-center text-xs font-medium text-gray-900 sm:text-left sm:text-sm">
+          <span className="text-sm font-medium text-slate-700">
             Solar Energy
           </span>
         </div>
 
-        <div className={"flex flex-col items-center gap-2 sm:flex-row sm:gap-3"}>
-          <div className={"flex h-10 w-10 rounded-full items-center justify-center bg-blue-400 sm:h-12 sm:w-12"}>
-            <Sailboat className={"h-5 w-5 text-white sm:h-6 sm:w-6"} />
+        <div className="flex items-center gap-3">
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-sky-100">
+            <Sailboat className="h-5 w-5 text-sky-600" />
           </div>
-          <span className="text-center text-xs font-medium text-gray-900 sm:text-left sm:text-sm">
+          <span className="text-sm font-medium text-slate-700">
             Home Dashboard
           </span>
         </div>
 
-        <div className={"flex flex-col items-center gap-2 sm:flex-row sm:gap-3"}>
-          <div className={"flex bg-lime-400 rounded-full items-center justify-center  h-10 w-10 sm:h-12 sm:w-12"}>
-            <Triangle className="h-5 w-5 fill-current text-black sm:h-6 sm:w-6" />
+        <div className="flex items-center gap-3">
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-amber-100">
+            <Triangle className="h-5 w-5 text-amber-600 fill-current" />
           </div>
-          <span className="text-center text-xs font-medium text-gray-900 sm:text-left sm:text-sm">
+          <span className="text-sm font-medium text-slate-700">
             Real-Time Monitoring
           </span>
         </div>
 
-        <div className={"hidden flex-col  items-center gap-2 sm:flex sm:flex-row sm:gap-3"}>
-          <div className={"flex w-10 h-10 justify-center items-center rounded-full bg-blue-400 sm:w-12 sm:h-12"}>
-            <Shield className={"h-5 w-5 text-white sm:h-6 sm:w-6"} />
+        <div className="hidden sm:flex items-center gap-3">
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-rose-100">
+            <Shield className="h-5 w-5 text-rose-600" />
           </div>
-          <span className="text-center text-xs font-medium text-gray-900 sm:text-left sm:text-sm">
+          <span className="text-sm font-medium text-slate-700">
             Anomaly Detection
           </span>
         </div>
       </nav>
 
-      {/* Main Content */}
-        <main className="px-4 py-4 md:px-6 md:py-16">
+      <main className="px-4 py-4 md:px-6 md:py-16">
         <div>
           <div className={"mb-12 md:mb-24"}>
             <h1 className="text-4xl leading-tight font-bold text-black sm:text-5xl sm:leading-20 md:text-7xl md:leading-32 xl:text-8xl">
@@ -62,9 +61,9 @@ const HeroSection = () => {
               <div className="flex items-center gap-4 sm:gap-8">
                 <span>with Real-Time</span>
               </div>
-                <div className="flex flex-row items-center gap-4 sm:gap-8">
+              <div className="flex flex-row items-center gap-4 sm:gap-8">
                 <span>Insights & Alerts</span>
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-400 sm:h-14 sm:w-14 md:h-16 md:w-16">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-400 sm:h-14 sm:w-14 md:h-16 md:w-16">
                   <Triangle className="h-5 w-5 fill-current text-white sm:h-7 sm:w-7 md:h-8 md:w-8" />
                 </div>
               </div>

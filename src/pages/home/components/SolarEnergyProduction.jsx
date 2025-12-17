@@ -143,6 +143,7 @@ const SolarEnergyProduction = () => {
       <div>
         <h2 className={"mb-2 text-2xl font-bold text-gray-900"}>
           Solar Energy Production
+          Daily energy output for the past 7 days
         </h2>
         <p className={"text-gray-600"}>
           Daily energy output for the past 7 days
