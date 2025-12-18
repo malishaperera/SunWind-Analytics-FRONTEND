@@ -1,4 +1,4 @@
-import EnergyProductionCard from "./EnergyProductionCard";
+import EnergyProductionCard from "@/pages/anomalies/components/EnergyProductionCard.jsx";
 
 const EnergyProductionCards = (props) => {
   if (props.energyProductionData.length === 0) {

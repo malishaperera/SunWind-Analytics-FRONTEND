@@ -4,9 +4,10 @@ import {Skeleton} from "@/components/ui/skeleton.jsx";
 import {useGetEnergyGenerationRecordsBySolarUnitQuery} from "@/lib/redux/query.js";
 import {useState} from "react";
 import {detectAnomalies, getAnomalyStats} from "@/lib/anomalyDetection.js";
-import EnergyProductionCards from "@/pages/home/components/EnergyProductionCards.jsx";
+// import EnergyProductionCards from "@/pages/home/components/EnergyProductionCards.jsx";
 import EnergyTab from "@/pages/dashboard/components/DataChart/EnergyTab.jsx";
 import {useSelector} from "react-redux";
+import EnergyProductionCards from "@/pages/anomalies/components/EnergyProductionCards.jsx";
 
 const DataCard = ({ title ="Solar Energy Production",solarUnitId }) => {
 
