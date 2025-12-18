@@ -8,36 +8,36 @@ const MainSection = () => {
   return (
     <>
       <section className="bg-white px-6 py-16 md:px-12">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 md:grid-cols-2 items-center">
-          <div className="overflow-hidden rounded-3xl h-[620px] w-[720px] relative right-30">
+        <div className="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="overflow-hidden rounded-3xl h-[520px] w-full shadow-lg">
             <video
-              src={demoVideo}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="h-full w-full object-cover"
+                src={demoVideo}
+                autoPlay
+                loop
+                muted
+                playsInline
+                controls
+                className="h-full w-full object-cover"
             />
           </div>
 
           <div className="space-y-6">
-            <h1 className="text-4xl font-bold text-slate-900 md:text-5xl">
+            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">
               Your Solar Energy <br /> Generation
             </h1>
 
-            <p className="text-lg text-slate-600 leading-relaxed">
+            <p className="text-lg text-slate-600 leading-relaxed max-w-xl">
               This month, your solar system generated{" "}
-              <span className="font-semibold text-blue-600">X kWh</span> of
-              clean energy. Monitor performance trends, reduce electricity
-              costs, and understand how much power you contribute back to the
-              grid.
+              <span className="font-semibold text-blue-600">X kWh</span> of clean
+              energy. Monitor performance trends, reduce electricity costs, and
+              understand how much power you contribute back to the grid.
             </p>
 
-            <div className="flex items-center gap-4 rounded-2xlp-4 max-w-sm">
+            <div className="flex items-center gap-4">
               <img
-                src={smallImg}
-                alt="Solar maintenance"
-                className="h-66 w-66 rounded-xl object-cover"
+                  src={smallImg}
+                  alt="Solar maintenance"
+                  className="h-40 w-40 rounded-xl object-cover shadow-md"
               />
             </div>
           </div>
