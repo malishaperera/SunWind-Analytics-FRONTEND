@@ -15,9 +15,9 @@ const DashboardPage = () => {
     }
 
     if (isErrorSolarUnit) {
-        return <div>Error: {errorSolarUnit.message}</div>;
+        // return <div>Error: {errorSolarUnit.message}</div>;
+        return <div>Hie</div>
     }
-
 
     return (
         <main className="mt-4">

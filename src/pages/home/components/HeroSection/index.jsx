@@ -1,4 +1,4 @@
-import imgWindTurbine from "./wind-turbine.png";
+import imgWindTurbine from "./assets/wind-turbine.png";
 import { Sailboat, Shield, Triangle, Sun } from "lucide-react";
 
 const HeroSection = () => {

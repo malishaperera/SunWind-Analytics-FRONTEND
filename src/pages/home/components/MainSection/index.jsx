@@ -2,7 +2,6 @@ import demoVideo from "./Sunwind-Anlatics.mp4";
 import smallImg from "./img.png";
 import image1 from "./img_1.png";
 import problemImg from "./img_2.png";
-import {Section} from "lucide-react";
 
 const MainSection = () => {
   return (

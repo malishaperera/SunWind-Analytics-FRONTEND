@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { useAuth } from "@clerk/clerk-react";
 
 const baseUrl = "http://localhost:3000/api";
 
@@ -22,21 +21,6 @@ const baseUrl = "http://localhost:3000/api";
 //                 }
 //             }),
 
-// export const api = createApi({
-//     reducerPath: "api",
-//     baseQuery: fetchBaseQuery({
-//         baseUrl,
-//         prepareHeaders: async (headers) => {
-//             if (window.Clerk && window.Clerk.session) {
-//                 const token = await window.Clerk.session.getToken();
-//                 console.log("Retrieved token:", token);
-//                 if (token) {
-//                     headers.set("Authorization", `Bearer ${token}`);
-//                 }
-//             }
-//             return headers;
-//         },
-//     2}),
 export const api = createApi({
     reducerPath: "api",
     baseQuery: fetchBaseQuery({
@@ -44,7 +28,6 @@ export const api = createApi({
         prepareHeaders: async (headers) => {
             const clerk = window.Clerk;
 
-            // 🛑 IMPORTANT CHECKS
             if (!clerk || !clerk.session) return headers;
 
             const token = await clerk.session.getToken();

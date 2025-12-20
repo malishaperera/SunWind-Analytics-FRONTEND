@@ -25,7 +25,7 @@ const EnergyProductionCard = (props) => {
 
   const [isSelected, setIsSelected] = useState(false);
   // const [num, setNum] = useState(0);
-  // const [user, setUser] = useState({ name: "Manupa", age: 24 });
+  // const [user, setUser] = useState({ name: "ms", age: 24 });
   // const [nums, setNums] = useState([2, 3, 5, 7]);
 
   const handleClick = () => {
