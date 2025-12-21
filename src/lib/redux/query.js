@@ -69,7 +69,11 @@ export const api = createApi({
             getAllUsers: build.query({
                 query: () => `/users`,
             }),
-    }),
+            getCurrentWeather: build.query({
+                query: ({ lat, lon }) =>
+                    `/weather/current?lat=${lat}&lon=${lon}`,
+            }),
+        }),
     })
 
 // Export hooks for usage in functional components, which are
@@ -81,4 +85,5 @@ export const {
     useGetSolarUnitByIdQuery,
     useCreateSolarUnitMutation,
     useEditSolarUnitMutation,
-    useGetAllUsersQuery} = api;
+    useGetAllUsersQuery,
+    useGetCurrentWeatherQuery,} = api;

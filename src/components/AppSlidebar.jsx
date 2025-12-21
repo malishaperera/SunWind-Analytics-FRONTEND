@@ -67,7 +67,7 @@ export function AppSidebar() {
             <SidebarContent>
                 <SidebarGroup>
                     <SidebarGroupLabel className="text-3xl font-bold text-foreground">
-                        <Link to="/">Aelora</Link>
+                        <Link to="/">Sun</Link>
                     </SidebarGroupLabel>
                     <SidebarGroupContent>
                         <SidebarMenu className="mt-4 text">
