@@ -73,6 +73,10 @@ export const api = createApi({
                 query: ({ lat, lon }) =>
                     `/weather/current?lat=${lat}&lon=${lon}`,
             }),
+            getAnomalies: build.query({
+                query: () => `/anomalies`,
+            }),
+
         }),
     })
 
@@ -86,4 +90,5 @@ export const {
     useCreateSolarUnitMutation,
     useEditSolarUnitMutation,
     useGetAllUsersQuery,
-    useGetCurrentWeatherQuery,} = api;
+    useGetCurrentWeatherQuery,
+    useGetAnomaliesQuery} = api;
