@@ -1,16 +1,22 @@
 import { Link } from "react-router";
 import { SignedIn, SignedOut, SignIn, UserButton } from "@clerk/clerk-react";
 import { Button } from "@/components/ui/button.jsx";
-
+import logo from "../../assets/logo-1.png";
 const Navigation = () => {
   return (
     <nav className={"px-12 py-6 flex justify-between items-center"}>
       <Link to="/" className={"flex items-center gap-3"}>
         <div className="w-15 h-15 rounded-full bg-indigo-100 flex justify-center items-center">
+          {/*<img*/}
+          {/*    src="/src/assets/logo-1.png"*/}
+          {/*    alt="SunWind Analytics Logo"*/}
+          {/*    className="w-28 h-28 object-contain"*/}
+          {/*/>*/}
+
           <img
-              src="/src/assets/logo-1.png"
+              src={logo}
               alt="SunWind Analytics Logo"
-              className="w-28 h-28 object-contain"
+              className="w-28 h-28 object-contai"
           />
         </div>
         {/*<span className="font-[Inter] text-xl font-semibold">SunWind-Analytics</span>*/}
