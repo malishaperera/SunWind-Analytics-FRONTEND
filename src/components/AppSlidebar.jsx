@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/sidebar"
 import {Link, useLocation} from "react-router";
 import {cn} from "@/lib/utils.js";
-
+import { Sun } from "lucide-react";
 
 // Menu items.
 const items = [
@@ -66,13 +66,25 @@ export function AppSidebar() {
         <Sidebar>
             <SidebarContent>
                 <SidebarGroup>
-                    <SidebarGroupLabel className="text-3xl font-bold text-foreground">
-                        <Link to="/">Sun</Link>
+                    <SidebarGroupLabel className="px-4 py-6">
+                        <Link to="/" className="flex items-center gap-3 group">
+                            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all">
+                                <Sun className="h-6 w-6" />
+                            </div>
+                            <div className="flex flex-col leading-tight">
+                                <span className="text-xl font-bold tracking-tight">
+                                    SunWind
+                                </span>
+                                <span className="text-sm text-muted-foreground">
+                                    Analytics
+                                </span>
+                            </div>
+                        </Link>
                     </SidebarGroupLabel>
                     <SidebarGroupContent>
-                        <SidebarMenu className="mt-4 text">
+                        <SidebarMenu className="mt-6">
                             {items.map((item) => (
-                                <SideBarTab key={item.url} item={item}/>
+                                <SideBarTab key={item.url} item={item} />
                             ))}
                         </SidebarMenu>
                     </SidebarGroupContent>
