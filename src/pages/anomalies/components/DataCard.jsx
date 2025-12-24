@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { format, toDate } from "date-fns";
-import { useGetEnergyGenerationRecordsBySolarUnitQuery } from "@/lib/redux/query";
+import {  useGetEnergyGenerationRecordsBySolarUnitQuery } from "@/lib/redux/query";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { detectAnomalies, getAnomalyStats } from "@/lib/anomalyDetection";

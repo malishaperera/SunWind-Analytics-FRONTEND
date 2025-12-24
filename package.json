@@ -1,4 +1,4 @@
-  {
+{
   "name": "front-end",
   "private": true,
   "version": "0.0.0",
@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@clerk/clerk-react": "^5.53.8",
+    "@heroicons/react": "^2.2.0",
     "@hookform/resolvers": "^5.2.2",
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-label": "^2.1.8",
@@ -29,6 +30,7 @@
     "react-day-picker": "^9.11.1",
     "react-dom": "^19.1.1",
     "react-hook-form": "^7.66.0",
+    "react-hot-toast": "^2.6.0",
     "react-redux": "^9.2.0",
     "react-router": "^7.9.4",
     "recharts": "^2.15.4",

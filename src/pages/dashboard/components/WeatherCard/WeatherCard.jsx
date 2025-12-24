@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import WeatherItem from "./WeatherItem";
-import { getWeatherLabel } from "./weather.utils";
+import { getWeatherLabel } from "./util/weather.utils.js";
 
 const WeatherCard = ({ weather }) => {
     return (
