@@ -6,7 +6,6 @@ import SolarOverviewCard from "@/pages/dashboard/components/Overview/SolarOvervi
 import PowerFlowCard from "@/pages/dashboard/components/Overview/PowerFlowCard.jsx";
 import SolarPanelInfoCard from "@/pages/dashboard/components/Overview/SolarPanelInfoCard.jsx";
 import DataCard from "@/pages/anomalies/components/DataCard.jsx";
-// import WeatherCard from "@/pages/dashboard/components/WeatherCard/WeatherCard.jsx";
 
 const DashboardPage = () => {
     const { user, isLoaded } = useUser();
@@ -33,8 +32,12 @@ const DashboardPage = () => {
     if (isError) return <div>Error loading solar unit</div>;
 
     return (
-        <main className="mt-4 bg-gray-850 min-h-screen">
-            {/* Header */}
+        <main className="mt-4 bg-gray-50 min-h-screen overflow-x-hidden">
+            <div className="mx-auto w-full max-w-[1400px] px-6">
+
+
+
+        {/* Header */}
             <h1 className="text-4xl font-bold text-gray-900">
                 {user?.firstName}'s House
             </h1>
@@ -51,16 +54,15 @@ const DashboardPage = () => {
 
             <KpiCards />
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8">
-                <div className="lg:col-span-2 min-w-0">
-                    <DataChart solarUnitId={solarUnit._id} />
-                </div>
-                <div className="min-w-[320px]">
-                    <SolarPanelInfoCard />
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8 overflow-hidden max-w-full">
+                    <div className="lg:col-span-2 min-w-0">
+                        <DataChart solarUnitId={solarUnit._id} />
+                    </div>
+                    <div className="w-full">
+                        <SolarPanelInfoCard />
+                    </div>
                 </div>
             </div>
-
-
         </main>
     );
 };

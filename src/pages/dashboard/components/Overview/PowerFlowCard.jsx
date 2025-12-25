@@ -17,8 +17,9 @@ const PowerNode = ({ icon, title, value }) => (
 
 const PowerFlowCard = () => {
     return (
-        <div className="bg-white rounded-2xl shadow-sm p-6 overflow-hidden">
-            {/* Header */}
+        <div className="bg-white rounded-2xl shadow-sm p-6 overflow-hidden relative max-w-full">
+
+        {/* Header */}
             <div className="flex items-center justify-between mb-6">
                 <h3 className="font-semibold text-gray-800">Power Flow</h3>
                 <div className="flex items-center gap-2 text-xs text-gray-500">
@@ -109,9 +110,13 @@ const PowerFlowCard = () => {
                         />
 
                         {/* Battery % */}
-                        <div className="absolute -right-10 top-1/2 -translate-y-1/2 px-3 py-1 rounded-full bg-slate-900 text-white text-xs">
+                        {/*<div className="absolute -right-10 top-1/2 -translate-y-1/2 px-3 py-1 rounded-full bg-slate-900 text-white text-xs">*/}
+                        {/*    🔋 52%*/}
+                        {/*</div>*/}
+                        <div className="mt-2 text-xs text-gray-600 text-center">
                             🔋 52%
                         </div>
+
                     </div>
                 </div>
             </div>

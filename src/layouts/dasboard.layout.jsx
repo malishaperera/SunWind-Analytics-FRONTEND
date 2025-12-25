@@ -7,7 +7,7 @@ export default function DashboardLayout(){
         <>
             <SidebarProvider>
                 <AppSidebar />
-                <main className="p-4 w-full bg-slae-00">
+                <main className="p-4 w-full bg-slae-00 ">
                     <SidebarTrigger className="block !size-8 [&_svg]:!w-7 [&_svg]:!h-7" />
                     <Outlet/>
                 </main>
