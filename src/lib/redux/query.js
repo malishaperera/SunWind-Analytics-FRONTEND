@@ -42,7 +42,7 @@ export const api = createApi({
     }),
         endpoints: (build) => ({
             getEnergyGenerationRecordsBySolarUnit: build.query({
-            query: ({id,groupBy,limit = 7}) => `/energy-generation-records/solar-unit/${id}?groupBy=${groupBy}&limit=${limit}`,
+            query: ({id,groupBy,limit=31    }) => `/energy-generation-records/solar-unit/${id}?groupBy=${groupBy}&limit=${limit}`,
             }),
             getSolarUnitForUser: build.query({
             query: () => `/solar-units/me`,

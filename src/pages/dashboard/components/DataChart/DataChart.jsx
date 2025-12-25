@@ -37,7 +37,7 @@ const DataCard = ({ solarUnitId }) => {
     }));
 
     return (
-        <Card className="p-6 rounded-2xl shadow-md bg-white">
+        <Card className="p-6 rounded-2xl shadow-md bg-white flex">
             {/* Header */}
             <div className="flex justify-between items-center mb-4">
                 <h2 className="text-xl font-semibold text-gray-900">
@@ -56,9 +56,9 @@ const DataCard = ({ solarUnitId }) => {
             </div>
 
             {/* Chart */}
-            <div className="h-[340px]">
+            <div className="h-[340px] w-full overflow-hidden">
                 <ResponsiveContainer width="100%" height="100%">
-                    <AreaChart data={chartData}>
+                <AreaChart data={chartData}>
                         <defs>
                             <linearGradient id="energyGradient" x1="0" y1="0" x2="0" y2="1">
                                 <stop offset="0%" stopColor="#3b82f6" stopOpacity={0.4} />

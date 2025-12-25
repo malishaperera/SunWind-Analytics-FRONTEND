@@ -124,3 +124,12 @@ html, body {
   padding: 0;
   overflow-x: hidden;
 }
+html {
+  overflow-y: scroll;
+}
+
+fff{
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
