@@ -106,9 +106,10 @@ const SolarEnergyProduction = () => {
 
     if (isLoading) {
         return (
-            <div className="fixed inset-0 flex items-center justify-center">
-                <div className="h-12 w-12 animate-spin rounded-full border-4 border-green-200 border-t-green-500" />
-            </div>
+            // <div className="fixed inset-0 flex items-center justify-center">
+            //     <div className="h-12 w-12 animate-spin rounded-full border-4 border-green-200 border-t-green-500" />
+            // </div>
+            <div>is Loading ...</div>
         );
     }
 

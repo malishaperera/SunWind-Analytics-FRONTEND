@@ -12,7 +12,7 @@ const severityStyles = {
     LOW: "bg-green-100 text-green-700",
 };
 
-// Left vertical indicator color
+// vertical indicator color
 const leftIndicator = {
     HIGH: "bg-red-500",
     MEDIUM: "bg-yellow-500",
@@ -31,6 +31,7 @@ const formatStatus = (status) => {
 
 const AnomalyList = ({ anomalies }) => {
     return (
+
         <div className="mt-10">
             {/* Header */}
             <h3 className="text-lg font-semibold text-gray-800 mb-4">
@@ -86,7 +87,6 @@ const AnomalyList = ({ anomalies }) => {
                                 </p>
                             </div>
 
-                            {/* Right side */}
                             <div className="flex flex-col items-end gap-3">
                                 {/* Status badge */}
                                 <span
