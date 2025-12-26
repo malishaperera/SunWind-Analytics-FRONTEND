@@ -9,6 +9,7 @@ const AnomaliesPage = () => {
     const { data: anomalies = [], isLoading } = useGetAnomaliesQuery();
     const { isLoading: isLoadingSolarUnit } = useGetSolarUnitForUserQuery();
 
+
     if (isLoadingSolarUnit || isLoading) {
         return (
             <div className="fixed inset-0 flex items-center justify-center">

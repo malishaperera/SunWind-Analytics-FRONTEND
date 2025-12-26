@@ -64,10 +64,6 @@ export const api = createApi({
             getAnomalyTrend: build.query({
                 query: (range) => `/anomalies/trend?range=${range}`,
             }),
-
-
-
-
         }),
     })
 
