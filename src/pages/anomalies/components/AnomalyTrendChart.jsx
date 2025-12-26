@@ -7,42 +7,36 @@ import {
     Tooltip,
     ResponsiveContainer,
 } from "recharts";
+import { useState } from "react";
+import { useGetAnomalyTrendQuery } from "@/lib/redux/query";
 
 const AnomalyTrendChart = () => {
-    const data = [
-        { name: "Week 1", value: 12 },
-        { name: "Week 2", value: 8 },
-        { name: "Week 3", value: 15 },
-        { name: "Week 4", value: 10 },
-    ];
+    const [range, setRange] = useState("weekly");
+    const { data = [], isLoading } = useGetAnomalyTrendQuery(range);
+
+    if (isLoading) {
+        return <div className="h-72 flex items-center justify-center">Loading...</div>;
+    }
 
     return (
         <div className="bg-white rounded-2xl shadow-sm p-6">
-            {/* Header */}
-            <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-gray-800">
-                    Anomaly Trends
-                </h3>
+            <div className="flex justify-between items-center mb-4">
+                <h3 className="text-lg font-semibold">Anomaly Trends</h3>
 
-                <select className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm text-gray-700 focus:outline-none">
-                    <option>Hourly</option>
-                    <option>Daily</option>
-                    <option selected>Weekly</option>
+                <select
+                    value={range}
+                    onChange={(e) => setRange(e.target.value)}
+                    className="border rounded-lg px-3 py-1.5"
+                >
+                    <option value="hourly">Hourly</option>
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
                 </select>
             </div>
 
-            {/* Chart */}
-            <div className="w-full h-72">
+            <div className="h-72">
                 <ResponsiveContainer>
                     <AreaChart data={data}>
-                        {/* 🔥 GRID LIKE FIRST IMAGE */}
-                        <CartesianGrid
-                            strokeDasharray="4 4"
-                            vertical={true}
-                            stroke="#e5e7eb"
-                        />
-
-                        {/* Gradient */}
                         <defs>
                             <linearGradient id="trendGradient" x1="0" y1="0" x2="0" y2="1">
                                 <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.35} />
@@ -50,34 +44,19 @@ const AnomalyTrendChart = () => {
                             </linearGradient>
                         </defs>
 
-                        <XAxis
-                            dataKey="name"
-                            axisLine={false}
-                            tickLine={false}
-                            tick={{ fill: "#6b7280", fontSize: 12 }}
-                        />
-
-                        <YAxis
-                            axisLine={false}
-                            tickLine={false}
-                            tick={{ fill: "#6b7280", fontSize: 12 }}
-                        />
-
+                        <CartesianGrid strokeDasharray="4 4" />
+                        <XAxis dataKey="label" />
+                        <YAxis allowDecimals={false} />
                         <Tooltip
-                            contentStyle={{
-                                borderRadius: "12px",
-                                border: "none",
-                                boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
-                            }}
+                            formatter={(value) => [`anomalies : ${value}`]}
                         />
-
                         <Area
                             type="monotone"
-                            dataKey="value"
+                            dataKey="count"
                             stroke="#3b82f6"
                             strokeWidth={3}
                             fill="url(#trendGradient)"
-                            dot={{ r: 4, strokeWidth: 2, fill: "#fff" }}
+                            dot={{ r: 4 }}
                             activeDot={{ r: 6 }}
                         />
                     </AreaChart>

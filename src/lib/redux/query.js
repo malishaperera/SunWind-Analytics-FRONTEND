@@ -3,25 +3,6 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 // const baseUrl = "http://localhost:3000/api";
 const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
-// Define a service using a base URL and expected endpoints
-// export const api = createApi({
-//         reducerPath: 'api',
-//         baseQuery: fetchBaseQuery(
-//             {
-//                 baseUrl: baseUrl,
-//                 prepareHeaders:async (headers) => {
-//                     const clerk = window.Clerk;
-//                     if (clerk){
-//                         const token = await clerk.session.getToken();
-//                         console.log("Retrieved token:", token);
-//                         if (token) {
-//                             headers.set('authorization', `Bearer ${token}`);
-//                         }
-//                     }
-//                     return headers;
-//                 }
-//             }),
-
 export const api = createApi({
     reducerPath: "api",
     baseQuery: fetchBaseQuery({
@@ -77,6 +58,15 @@ export const api = createApi({
             getAnomalies: build.query({
                 query: () => `/anomalies`,
             }),
+            // getAnomalyTrend: build.query({
+            //     query: () => "/anomalies/trend",
+            // }),
+            getAnomalyTrend: build.query({
+                query: (range) => `/anomalies/trend?range=${range}`,
+            }),
+
+
+
 
         }),
     })
@@ -92,4 +82,5 @@ export const {
     useEditSolarUnitMutation,
     useGetAllUsersQuery,
     useGetCurrentWeatherQuery,
-    useGetAnomaliesQuery} = api;
+    useGetAnomaliesQuery,
+    useGetAnomalyTrendQuery} = api;
