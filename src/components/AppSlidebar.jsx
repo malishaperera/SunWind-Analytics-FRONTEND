@@ -41,6 +41,11 @@ const items = [
         url: "/dashboard/users",
         icon: <Users className="w-8 h-8"size={52}/>,
     },
+    {
+        title: "Invoices",
+        url: "/dashboard/invoices",
+        icon: <ChartLine className="w-8 h-8"size={52}/>,
+    }
 ]
 
 export function AppSidebar() {
