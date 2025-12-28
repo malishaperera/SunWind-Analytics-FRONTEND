@@ -1,24 +1,15 @@
-// import CheckoutForm from "./components/CheckoutForm";
-// import {useParams} from "react-router";
-//
-// export default function InvoicePayPage() {
-//     const { id } = useParams();
-//
-//     return (
-//         <div>
-//             <h1>Pay Invoice</h1>
-//             <CheckoutForm invoiceId={id} />
-//         </div>
-//     );
-// }
 import { useEffect } from "react";
 import { useCreateCheckoutSessionMutation } from "@/lib/redux/query";
-import {useParams} from "react-router";
+import { useParams } from "react-router";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe(
+    import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY
+);
 
 const InvoicePayPage = () => {
     const { id } = useParams();
-
-    const [createCheckoutSession, { isLoading }] =
+    const [createCheckoutSession] =
         useCreateCheckoutSessionMutation();
 
     useEffect(() => {
@@ -26,8 +17,11 @@ const InvoicePayPage = () => {
             try {
                 const res = await createCheckoutSession(id).unwrap();
 
-                // 🔴 IMPORTANT: backend should return url
-                window.location.href = res.url;
+                const stripe = await stripePromise;
+
+                await stripe.redirectToCheckout({
+                    sessionId: res.sessionId,
+                });
             } catch (err) {
                 console.error("Stripe checkout error", err);
             }
@@ -36,12 +30,7 @@ const InvoicePayPage = () => {
         startPayment();
     }, [id, createCheckoutSession]);
 
-    return (
-        <div>
-            <h2>Redirecting to payment...</h2>
-            {isLoading && <p>Please wait...</p>}
-        </div>
-    );
+    return <h2>Redirecting to payment...</h2>;
 };
 
 export default InvoicePayPage;
