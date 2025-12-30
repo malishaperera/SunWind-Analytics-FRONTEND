@@ -9,7 +9,6 @@ const AnomaliesPage = () => {
     const { data: anomalies = [], isLoading } = useGetAnomaliesQuery();
     const { isLoading: isLoadingSolarUnit } = useGetSolarUnitForUserQuery();
 
-
     if (isLoadingSolarUnit || isLoading) {
         return (
             <div className="fixed inset-0 flex items-center justify-center">
@@ -20,7 +19,6 @@ const AnomaliesPage = () => {
 
     return (
         <main className="p-6 bg-gray-50 min-h-screen">
-            {/* Header */}
             <div className="mb-8">
                 <h1 className="text-3xl font-bold text-gray-900">
                     {user?.firstName}'s House
@@ -29,14 +27,10 @@ const AnomaliesPage = () => {
                     Monitor and analyze solar anomalies
                 </p>
             </div>
-
-            {/* Charts */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <TypeDistributionChart anomalies={anomalies} />
                 <AnomalyTrendChart />
             </div>
-
-            {/* List */}
             <AnomalyList anomalies={anomalies} />
         </main>
     );

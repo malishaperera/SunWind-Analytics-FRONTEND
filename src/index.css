@@ -133,3 +133,10 @@ fff{
   padding: 0;
   overflow-x: hidden;
 }
+
+html, body {
+  overscroll-behavior: none;
+  scroll-behavior: smooth;
+}
+
+

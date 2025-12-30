@@ -26,7 +26,6 @@ import PaymentCompletePage from "@/pages/invoices/PaymentCompletePage.jsx";
 import InvoicesPage from "@/pages/invoices/InvoicesPage.jsx";
 import InvoicePayPage from "@/pages/invoices/InvoicePayPage.jsx";
 
-// Import your Publishable Key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
 if (!PUBLISHABLE_KEY) {
@@ -49,7 +48,6 @@ createRoot(document.getElementById("root")).render(
                 <Route element={<DashboardLayout />}>
                   <Route path="/dashboard" element={<DashboardPage />} />
                   <Route path="/dashboard/anomalies" element={<AnomaliesPage />} />
-                  {/* ✅ Task 4 routes */}
                   <Route path="/dashboard/invoices" element={<InvoicesPage />} />
                   <Route path="/dashboard/invoices/:id/pay" element={<InvoicePayPage />} />
                   <Route path="/dashboard/invoices/complete" element={<PaymentCompletePage />}/>
