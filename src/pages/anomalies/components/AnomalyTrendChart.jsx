@@ -15,7 +15,11 @@ const AnomalyTrendChart = () => {
     const { data = [], isLoading } = useGetAnomalyTrendQuery(range);
 
     if (isLoading) {
-        return <div className="h-72 flex items-center justify-center">Loading...</div>;
+        return (
+            <div className="h-72 flex items-center justify-center text-gray-400">
+                Loading anomaly trends...
+            </div>
+        );
     }
 
     return (
@@ -33,35 +37,55 @@ const AnomalyTrendChart = () => {
                     <option value="weekly">Weekly</option>
                 </select>
             </div>
+            {data.length === 0 ? (
+                <div className="h-72 flex flex-col items-center justify-center text-gray-400 gap-2">
+                    <span className="text-4xl">📉</span>
+                    <p>No anomalies detected</p>
+                </div>
+            ) : (
+                <div className="h-72">
+                    <ResponsiveContainer>
+                        <AreaChart data={data}>
+                            <defs>
+                                <linearGradient
+                                    id="trendGradient"
+                                    x1="0"
+                                    y1="0"
+                                    x2="0"
+                                    y2="1"
+                                >
+                                    <stop
+                                        offset="5%"
+                                        stopColor="#3b82f6"
+                                        stopOpacity={0.35}
+                                    />
+                                    <stop
+                                        offset="95%"
+                                        stopColor="#3b82f6"
+                                        stopOpacity={0}
+                                    />
+                                </linearGradient>
+                            </defs>
 
-            <div className="h-72">
-                <ResponsiveContainer>
-                    <AreaChart data={data}>
-                        <defs>
-                            <linearGradient id="trendGradient" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.35} />
-                                <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
-                            </linearGradient>
-                        </defs>
-
-                        <CartesianGrid strokeDasharray="4 4" />
-                        <XAxis dataKey="label" />
-                        <YAxis allowDecimals={false} />
-                        <Tooltip
-                            formatter={(value) => [`anomalies : ${value}`]}
-                        />
-                        <Area
-                            type="monotone"
-                            dataKey="count"
-                            stroke="#3b82f6"
-                            strokeWidth={3}
-                            fill="url(#trendGradient)"
-                            dot={{ r: 4 }}
-                            activeDot={{ r: 6 }}
-                        />
-                    </AreaChart>
-                </ResponsiveContainer>
-            </div>
+                            <CartesianGrid strokeDasharray="4 4" />
+                            <XAxis dataKey="label" />
+                            <YAxis allowDecimals={false} />
+                            <Tooltip
+                                formatter={(value) => [`anomalies : ${value}`]}
+                            />
+                            <Area
+                                type="monotone"
+                                dataKey="count"
+                                stroke="#3b82f6"
+                                strokeWidth={3}
+                                fill="url(#trendGradient)"
+                                dot={{ r: 4 }}
+                                activeDot={{ r: 6 }}
+                            />
+                        </AreaChart>
+                    </ResponsiveContainer>
+                </div>
+            )}
         </div>
     );
 };
