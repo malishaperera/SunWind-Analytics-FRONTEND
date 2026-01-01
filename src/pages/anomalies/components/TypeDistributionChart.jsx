@@ -11,28 +11,7 @@ const TypeDistributionChart = ({ anomalies }) => {
     }));
 
     return (
-        // <div className="bg-white rounded-2xl shadow-sm p-6">
-        //     <h3 className="font-semibold mb-4 text-gray-800">
-        //         Anomaly Types Distribution
-        //     </h3>
-        //
-        //     <div className="w-full h-64">
-        //         <ResponsiveContainer>
-        //             <PieChart>
-        //                 {if (data.length === 0) {
-        //                     return <p className="text-center">No anomalies to display</p>;
-        //                 }}
-        //                 <Pie data={data} dataKey="value" outerRadius={100} label>
-        //                     {data.map((_, i) => (
-        //                         <Cell key={i} fill={COLORS[i % COLORS.length]} />
-        //                     ))}
-        //                 </Pie>
-        //                 <Tooltip />
-        //             </PieChart>
-        //         </ResponsiveContainer>
-        //     </div>
-        // </div>
-        <div className="bg-white rounded-2xl shadow-sm p-6">
+        <div className="rounded-3xl p-6 border border-slate-200 shadow-sm bg-gradient-to-br from-white via-sky-50 to-emerald-50 overflow-hidden">
             <h3 className="font-semibold mb-4 text-gray-800">
                 Anomaly Types Distribution
             </h3>

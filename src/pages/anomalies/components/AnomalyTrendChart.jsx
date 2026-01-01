@@ -23,7 +23,8 @@ const AnomalyTrendChart = () => {
     }
 
     return (
-        <div className="bg-white rounded-2xl shadow-sm p-6">
+        // <div className="bg-white rounded-2xl shadow-sm p-6">
+        <div className="rounded-3xl p-6 border border-slate-200 shadow-sm bg-gradient-to-br from-white via-sky-50 to-blue-50">
             <div className="flex justify-between items-center mb-4">
                 <h3 className="text-lg font-semibold">Anomaly Trends</h3>
 

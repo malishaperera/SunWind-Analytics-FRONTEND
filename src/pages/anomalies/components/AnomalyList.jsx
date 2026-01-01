@@ -32,7 +32,8 @@ const formatStatus = (status) => {
 const AnomalyList = ({ anomalies }) => {
     return (
 
-        <div className="mt-10">
+        <div className="mt-10 rounded-3xl p-6 border border-slate-200 shadow-sm bg-gradient-to-br from-white via-sky-50 to-emerald-50 overflow-hidden">
+        {/*<div className="mt-10">*/}
             <h3 className="text-lg font-semibold text-gray-800 mb-4">
                 Recent Anomalies
             </h3>
