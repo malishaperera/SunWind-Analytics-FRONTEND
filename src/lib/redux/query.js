@@ -63,22 +63,20 @@ export const api = createApi({
                 query: (range) => `/anomalies/trend?range=${range}`,
             }),
 
-            ///Stripe Payment Endpoints
-            getInvoices: build.query({
-                query: () => "/invoices",
-            }),
-
-
-            getInvoiceById: build.query({
-                query: (id) => `/invoices/${id}`,
-            }),
-
             createCheckoutSession: build.mutation({
                 query: (invoiceId) => ({
                     url: "/payments/create-checkout-session",
                     method: "POST",
                     body: { invoiceId },
                 }),
+            }),
+
+            getInvoices: build.query({
+                query: () => "/invoices",
+            }),
+
+            getInvoiceById: build.query({
+                query: (id) => `/invoices/${id}`,
             }),
 
             getSessionStatus: build.query({
@@ -102,9 +100,10 @@ export const {
     useGetCurrentWeatherQuery,
     useGetAnomaliesQuery,
     useGetAnomalyTrendQuery,
+    useCreateCheckoutSessionMutation,
     useGetInvoicesQuery,
     useGetInvoiceByIdQuery,
-    useCreateCheckoutSessionMutation,
+    // useCreateCheckoutSessionMutation,
     useGetSessionStatusQuery,
 
 } = api;
