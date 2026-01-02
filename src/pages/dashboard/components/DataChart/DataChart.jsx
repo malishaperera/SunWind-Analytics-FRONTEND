@@ -10,13 +10,6 @@ import {
 } from "recharts";
 import { format } from "date-fns";
 import { useState } from "react";
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select";
 import { useGetEnergyGenerationRecordsBySolarUnitQuery } from "@/lib/redux/query";
 
 const DataCard = ({ solarUnitId }) => {
@@ -37,69 +30,84 @@ const DataCard = ({ solarUnitId }) => {
     }));
 
     return (
-        <Card className="p-6 rounded-2xl shadow-md bg-white flex">
-            {/* Header */}
-            <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl font-semibold text-gray-900">
-                    Energy Production
-                </h2>
+        <Card className="rounded-3xl p-6 border border-slate-200 shadow-sm bg-gradient-to-br from-white via-sky-50 to-blue-50">
 
-                <Select value={selectedRange} onValueChange={setSelectedRange}>
-                    <SelectTrigger className="w-[140px]">
-                        <SelectValue placeholder="Range" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        <SelectItem value="7">7 Days</SelectItem>
-                        <SelectItem value="30">30 Days</SelectItem>
-                    </SelectContent>
-                </Select>
+            <div className="flex items-center justify-between mb-6">
+                <div>
+                    <h2 className="text-xl font-semibold text-slate-900">
+                        Energy Production
+                    </h2>
+                    <p className="text-sm text-slate-500">
+                        Daily generated energy
+                    </p>
+                </div>
+                <select
+                    value={selectedRange}
+                    onChange={(e) => setSelectedRange(e.target.value)}
+                    className="text-sm px-4 py-2 rounded-xl border border-slate-200
+                     bg-white shadow-sm focus:outline-none focus:ring-2
+                     focus:ring-blue-500 cursor-pointer"
+                >
+                    <option value="7">Last 7 Days</option>
+                    <option value="30">Last 30 Days</option>
+                </select>
             </div>
 
-            {/* Chart */}
-            <div className="h-[340px] w-full overflow-hidden">
+            <div className="h-[360px] w-full">
                 <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={chartData}>
+                    <AreaChart
+                        data={chartData}
+                        margin={{ top: 20, right: 30, left: 10, bottom: 10 }}
+                    >
                         <defs>
                             <linearGradient id="energyGradient" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stopColor="#3b82f6" stopOpacity={0.4} />
+                                <stop offset="0%" stopColor="#3b82f6" stopOpacity={0.45} />
                                 <stop offset="100%" stopColor="#3b82f6" stopOpacity={0.05} />
                             </linearGradient>
                         </defs>
 
-                        <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                        <CartesianGrid
+                            strokeDasharray="3 3"
+                            vertical={false}
+                            stroke="#e5e7eb"
+                        />
 
                         <XAxis
                             dataKey="date"
                             tickLine={false}
                             axisLine={false}
-                            tick={{ fill: "#6b7280", fontSize: 12 }}
+                            tick={{ fill: "#64748b", fontSize: 12 }}
                         />
 
                         <YAxis
                             tickLine={false}
                             axisLine={false}
-                            tick={{ fill: "#6b7280", fontSize: 12 }}
+                            tick={{ fill: "#64748b", fontSize: 12 }}
                         />
 
                         <Tooltip
                             cursor={{ stroke: "#3b82f6", strokeWidth: 1 }}
                             contentStyle={{
                                 backgroundColor: "white",
-                                borderRadius: "8px",
+                                borderRadius: "12px",
                                 border: "1px solid #e5e7eb",
+                                boxShadow: "0 10px 20px rgba(0,0,0,0.08)",
                             }}
-                            labelStyle={{ color: "#111827", fontWeight: 600 }}
+                            labelStyle={{
+                                color: "#0f172a",
+                                fontWeight: 600,
+                            }}
                         />
 
                         <Area
                             type="monotone"
                             dataKey="energy"
-                            stroke="#3b82f6"
-                            strokeWidth={2}
+                            stroke="#2563eb"
+                            strokeWidth={3}
                             fill="url(#energyGradient)"
                             dot={{ r: 3 }}
                             activeDot={{ r: 6 }}
-                            animationDuration={900}
+                            animationDuration={800}
                         />
                     </AreaChart>
                 </ResponsiveContainer>

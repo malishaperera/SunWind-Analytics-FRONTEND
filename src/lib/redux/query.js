@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-// const baseUrl = "http://localhost:3000/api";
-const baseUrl = import.meta.env.VITE_API_BASE_URL;
+const baseUrl = "http://localhost:3000/api";
+// const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
 export const api = createApi({
     reducerPath: "api",
@@ -55,23 +55,12 @@ export const api = createApi({
                 query: ({ lat, lon }) =>
                     `/weather/current?lat=${lat}&lon=${lon}`,
             }),
+
             getAnomalies: build.query({
-                query: () => `/anomalies`,
+                query: () => `/anomalies`,  
             }),
-            // getAnomalyTrend: build.query({
-            //     query: () => "/anomalies/trend",
-            // }),
             getAnomalyTrend: build.query({
                 query: (range) => `/anomalies/trend?range=${range}`,
-            }),
-
-            ///Stripe Payment Endpoints
-            getInvoices: build.query({
-                query: () => "/invoices",
-            }),
-
-            getInvoiceById: build.query({
-                query: (id) => `/invoices/${id}`,
             }),
 
             createCheckoutSession: build.mutation({
@@ -80,6 +69,14 @@ export const api = createApi({
                     method: "POST",
                     body: { invoiceId },
                 }),
+            }),
+
+            getInvoices: build.query({
+                query: () => "/invoices",
+            }),
+
+            getInvoiceById: build.query({
+                query: (id) => `/invoices/${id}`,
             }),
 
             getSessionStatus: build.query({
@@ -103,9 +100,10 @@ export const {
     useGetCurrentWeatherQuery,
     useGetAnomaliesQuery,
     useGetAnomalyTrendQuery,
+    useCreateCheckoutSessionMutation,
     useGetInvoicesQuery,
     useGetInvoiceByIdQuery,
-    useCreateCheckoutSessionMutation,
+    // useCreateCheckoutSessionMutation,
     useGetSessionStatusQuery,
 
 } = api;

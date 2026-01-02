@@ -22,11 +22,11 @@ import SettingsPage from "@/pages/admin/settings.page.jsx";
 import SolarUnitEditPage from "@/pages/admin/solar-unit-edit.page.jsx";
 import SolarUnitCreatePage from "@/pages/admin/solar-unit-create.page.jsx";
 import AnomaliesPage from "@/pages/anomalies/anomalies.page.jsx";
-import PaymentCompletePage from "@/pages/invoices/PaymentCompletePage.jsx";
 import InvoicesPage from "@/pages/invoices/InvoicesPage.jsx";
-import InvoicePayPage from "@/pages/invoices/InvoicePayPage.jsx";
+import InvoicePaymentPage from "@/pages/invoices/Payment.jsx";
+import InvoiceCompletePage from "@/pages/invoices/Invoice-complete.page.jsx";
+import InvoicePaymentSuccessPage from "@/pages/invoices/InvoicePaymentSuccessPage.jsx";
 
-// Import your Publishable Key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
 if (!PUBLISHABLE_KEY) {
@@ -49,12 +49,9 @@ createRoot(document.getElementById("root")).render(
                 <Route element={<DashboardLayout />}>
                   <Route path="/dashboard" element={<DashboardPage />} />
                   <Route path="/dashboard/anomalies" element={<AnomaliesPage />} />
-                  {/* ✅ Task 4 routes */}
                   <Route path="/dashboard/invoices" element={<InvoicesPage />} />
-                  <Route path="/dashboard/invoices/:id/pay" element={<InvoicePayPage />} />
-                  <Route path="/dashboard/invoices/complete" element={<PaymentCompletePage />}/>
-                  {/*<Route path="/dashboard/analytics" element={<AnomaliesPage />} />*/}
-                  {/*  <Route path="/dashboard/users" element={<AnomaliesPage />} />*/}
+                  <Route path="/dashboard/invoices/:id/pay" element={<InvoicePaymentPage />}/>
+                  <Route path="/dashboard/invoices/complete" element={<InvoiceCompletePage />}/>
                 </Route>
                 <Route element={<AuthorizedLayout/>}>
                   <Route element={<AdminLayout />}>
