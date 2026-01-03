@@ -15,8 +15,6 @@ export default function InvoiceCompletePage() {
     }
 
     const isSuccess = invoice.paymentStatus === "PAID";
-    console.log(isSuccess+" "+invoice.paymentStatus);
-
 
     return (
         <div className="max-w-xl mx-auto p-8 text-center">
@@ -39,7 +37,6 @@ export default function InvoiceCompletePage() {
                     </p>
                 </>
             )}
-
             <Link
                 to="/dashboard/invoices"
                 className="inline-block mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg"
