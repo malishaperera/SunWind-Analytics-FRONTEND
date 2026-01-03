@@ -102,7 +102,6 @@ export const {
     useCreateCheckoutSessionMutation,
     useGetInvoicesQuery,
     useGetInvoiceByIdQuery,
-    // useCreateCheckoutSessionMutation,
     useGetSessionStatusQuery,
 
 } = api;

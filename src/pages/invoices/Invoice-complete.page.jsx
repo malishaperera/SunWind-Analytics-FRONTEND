@@ -1,19 +1,22 @@
-import { useSearchParams, Link } from "react-router";
-import { useGetSessionStatusQuery } from "@/lib/redux/query";
+import {Link, useSearchParams} from "react-router";
+import {useGetInvoiceByIdQuery} from "@/lib/redux/query.js";
 
 export default function InvoiceCompletePage() {
     const [searchParams] = useSearchParams();
-    const sessionId = searchParams.get("session_id");
+    const invoiceId = searchParams.get("invoiceId");
 
-    const { data, isLoading } = useGetSessionStatusQuery(sessionId, {
-        skip: !sessionId,
+    const { data: invoice, isLoading } = useGetInvoiceByIdQuery(invoiceId, {
+        skip: !invoiceId,
+        pollingInterval: 2000,
     });
 
-    if (isLoading) {
+    if (isLoading || !invoice) {
         return <div className="p-6 text-center">Verifying payment...</div>;
     }
 
-    const isSuccess = data?.paymentStatus === "paid";
+    const isSuccess = invoice.paymentStatus === "PAID";
+    console.log(isSuccess+" "+invoice.paymentStatus);
+
 
     return (
         <div className="max-w-xl mx-auto p-8 text-center">
@@ -23,15 +26,17 @@ export default function InvoiceCompletePage() {
                         ✅ Payment Successful
                     </h1>
                     <p className="mb-4">
-                        Amount Paid: ${(data.amountTotal / 100).toFixed(2)}
+                        Energy: {invoice.totalEnergyGenerated} kWh
                     </p>
                 </>
             ) : (
                 <>
-                    <h1 className="text-2xl font-bold text-red-600 mb-2">
-                        ❌ Payment Failed
+                    <h1 className="text-2xl font-bold text-yellow-600 mb-2">
+                        ⏳ Processing Payment...
                     </h1>
-                    <p className="mb-4">Please try again</p>
+                    <p className="mb-4">
+                        Please wait a moment
+                    </p>
                 </>
             )}
 
