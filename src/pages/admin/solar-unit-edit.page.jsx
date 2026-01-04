@@ -1,11 +1,5 @@
 import { useParams, useNavigate } from "react-router";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import { ArrowLeft, Zap, Calendar, Gauge, Activity } from "lucide-react";
-import { format } from "date-fns";
 import { useGetSolarUnitByIdQuery } from "@/lib/redux/query";
-import {CreateSolarUnitForm} from "@/pages/admin/component/CreateSolarUnitForm.jsx";
 import {EditSolarUnitForm} from "@/pages/admin/component/EditSolarUnitForm.jsx";
 
 export default function SolarUnitEditPage() {

@@ -7,9 +7,6 @@ export default function DashboardLayout() {
         <SidebarProvider>
             <AppSidebar/>
             <div className="flex flex-col w-full">
-                {/*<div className="p-4 lg:hidden">*/}
-                {/*    <SidebarTrigger className="!size-8 [&_svg]:!w-7 [&_svg]:!h-7"/>*/}
-                {/*</div>*/}
                 <Outlet/>
             </div>
         </SidebarProvider>

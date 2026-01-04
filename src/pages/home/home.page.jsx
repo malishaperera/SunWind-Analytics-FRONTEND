@@ -10,7 +10,6 @@ const HomePage = () => {
             <SolarEnergyProduction/>
             <MainSection/>
             <FooterSection/>
-
         </main>
     )
 }

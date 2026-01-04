@@ -25,7 +25,6 @@ import AnomaliesPage from "@/pages/anomalies/anomalies.page.jsx";
 import InvoicesPage from "@/pages/invoices/InvoicesPage.jsx";
 import InvoicePaymentPage from "@/pages/invoices/Payment.jsx";
 import InvoiceCompletePage from "@/pages/invoices/Invoice-complete.page.jsx";
-import InvoicePaymentSuccessPage from "@/pages/invoices/InvoicePaymentSuccessPage.jsx";
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 

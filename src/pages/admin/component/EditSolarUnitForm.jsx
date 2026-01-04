@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button"
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
@@ -13,8 +12,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select.jsx";
-import {DatePicker} from "@/components/ui/date-picker.jsx";
-import {useCreateSolarUnitMutation, useEditSolarUnitMutation, useGetAllUsersQuery} from "@/lib/redux/query.js";
+import {useEditSolarUnitMutation, useGetAllUsersQuery} from "@/lib/redux/query.js";
 import {useParams} from "react-router";
 
 const formSchema = z.object({

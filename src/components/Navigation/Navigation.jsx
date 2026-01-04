@@ -1,32 +1,26 @@
 import { Link } from "react-router";
-import { SignedIn, SignedOut, SignIn, UserButton } from "@clerk/clerk-react";
+import { SignedIn, SignedOut, UserButton } from "@clerk/clerk-react";
 import { Button } from "@/components/ui/button.jsx";
 import logo from "../../assets/logo-1.png";
 const Navigation = () => {
   return (
+
     <nav className={"px-12 py-6 flex justify-between items-center"}>
+
       <Link to="/" className={"flex items-center gap-3"}>
         <div className="w-15 h-15 rounded-full bg-indigo-100 flex justify-center items-center">
-          {/*<img*/}
-          {/*    src="/src/assets/logo-1.png"*/}
-          {/*    alt="SunWind Analytics Logo"*/}
-          {/*    className="w-28 h-28 object-contain"*/}
-          {/*/>*/}
-
           <img
               src={logo}
               alt="SunWind Analytics Logo"
               className="w-28 h-28 object-contai"
           />
         </div>
-        {/*<span className="font-[Inter] text-xl font-semibold">SunWind-Analytics</span>*/}
         <span className="font-[Inter] text-xl font-semibold">
           <span className="text-orange-500">Sun</span>
           <span className="text-blue-400">Wind</span>
           <span className="text-gray-400">-</span>
           <span className="text-cyan-400">Analytics</span>
         </span>
-
       </Link>
 
       <div className={"flex items-center gap-12"}>
@@ -52,14 +46,7 @@ const Navigation = () => {
             <span className="font-[Inter] text-sm font-medium">Dashboard</span>
           </Link>
         </SignedIn>
-        <div className={"flex items-center gap-2"}>
-          {/*<div className={"w-8 h-8 rounded-full bg-blue-400 flex justify-center items-center"}>*/}
-          {/*<span className="font-[Inter] text-sm font-medium text-white">*/}
-          {/*  {user}*/}
-          {/*</span>*/}
-          {/*</div>*/}
-          {/*<span className="font-[Inter] text-sm font-medium">Aelora</span>*/}
-        </div>
+
         <SignedOut>
           <div className="flex items-center gap-3">
             <Button asChild>
@@ -67,7 +54,6 @@ const Navigation = () => {
                 Sign In
               </Link>
             </Button>
-
             <Button asChild variant="outline">
               <Link to="/sign-up" className="flex items-center px-3 py-2">
                 Sign Up
