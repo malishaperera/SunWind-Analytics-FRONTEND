@@ -97,11 +97,11 @@ import {useGetSolarUnitForUserQuery} from "@/lib/redux/query.js";
 import {useUser} from "@clerk/clerk-react";
 
 const SolarEnergyProduction = () => {
-    const { isLoaded } = useUser();
+    const { isLoaded ,isSignedIn } = useUser();
 
     const { data: solarUnit, isLoading, isError } =
         useGetSolarUnitForUserQuery(undefined, {
-            skip: !isLoaded,
+            skip: !isLoaded || !isSignedIn,
         });
 
     if (isLoading) {
@@ -111,6 +111,10 @@ const SolarEnergyProduction = () => {
             // </div>
             <div>is Loading ...</div>
         );
+    }
+
+    if (!isSignedIn) {
+        return null; // or <div>Please sign in</div>
     }
 
     if (isError) return <div>Error loading solar unit</div>;
