@@ -29,6 +29,9 @@ The frontend is designed to work seamlessly with a secure backend API and extern
 - **Backend API**  
   https://sunwind-analytics-backend-1.onrender.com
 
+- **Backend Repository**  
+  https://github.com/malishaperera/SunWind-Analytics-BackEND
+
 ---
 
 ## 🎯 Application Responsibilities
