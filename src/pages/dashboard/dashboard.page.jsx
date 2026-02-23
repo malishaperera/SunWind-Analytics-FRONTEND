@@ -37,7 +37,7 @@ const DashboardPage = () => {
   return (
     <main className="mt-4 bg-gray-50 min-h-screen overflow-x-hidden ">
       <div className="mx-auto w-full max-w-[1400px] px-6">
-        <div className="flex items-start gap-4 mb-6">
+        <div className="flex items-start gap-4 mb-6">+
           <SidebarTrigger className="mt-1 !size-9 [&_svg]:!w-7 [&_svg]:!h-7" />
           <div>
             <h1 className="text-4xl font-bold text-gray-900">

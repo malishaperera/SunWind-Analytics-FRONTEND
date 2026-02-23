@@ -135,7 +135,7 @@ fff{
 }
 
 html, body {
-  overscroll-behavior: none;
+  /*overscroll-behavior: none;*/
   scroll-behavior: smooth;
 }
 

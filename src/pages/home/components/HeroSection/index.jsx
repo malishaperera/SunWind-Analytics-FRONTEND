@@ -2,52 +2,54 @@ import imgWindTurbine from "./assets/wind-turbine.png";
 import { Sailboat, Shield, Triangle, Sun } from "lucide-react";
 
 const HeroSection = () => {
+  const navItems = [
+    {
+      label: "Solar Energy",
+      color: "bg-indigo-100",
+      icon: <Sun className="text-indigo-600" />,
+    },
+    {
+      label: "Home Dashboard",
+      color: "bg-sky-100",
+      icon: <Sailboat className="text-sky-600" />,
+    },
+    {
+      label: "Monitoring",
+      color: "bg-amber-100",
+      icon: <Triangle className="text-amber-600" />,
+    },
+    {
+      label: "Alerts",
+      color: "bg-rose-100",
+      icon: <Shield className="text-rose-600" />,
+    },
+  ];
   return (
-    <div className="bg-gradient-to-b from-white to-slate-50 px-6 md:px-12 font-[Inter]">
+    <div className="min-h-screen bg-gradient-to-b from-white to-slate-50 px-4 sm:px-8 md:px-12">
       {/* Navigation Bar */}
-      <nav className="flex flex-wrap items-center justify-between py-6 gap-6">
-        <div className="flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-100">
-            <Sun className="h-5 w-5 text-indigo-600" />
+      <nav className="grid grid-cols-2 gap-4 mt-8 sm:flex sm:flex-wrap sm:justify-between">
+        {navItems.map((item, index) => (
+          <div key={index} className="flex items-center gap-3">
+            <div
+              className={`flex h-11 w-11 items-center justify-center rounded-xl ${item.color}`}
+            >
+              {item.icon}
+            </div>
+            <span className="text-sm font-medium text-slate-700">
+              {item.label}
+            </span>
           </div>
-          <span className="text-sm font-medium text-slate-700">
-            Solar Energy
-          </span>
-        </div>
-
-        <div className="flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-sky-100">
-            <Sailboat className="h-5 w-5 text-sky-600" />
-          </div>
-          <span className="text-sm font-medium text-slate-700">
-            Home Dashboard
-          </span>
-        </div>
-
-        <div className="flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-amber-100">
-            <Triangle className="h-5 w-5 text-amber-600 fill-current" />
-          </div>
-          <span className="text-sm font-medium text-slate-700">
-            Real-Time Monitoring
-          </span>
-        </div>
-
-        <div className="hidden sm:flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-rose-100">
-            <Shield className="h-5 w-5 text-rose-600" />
-          </div>
-          <span className="text-sm font-medium text-slate-700">
-            Anomaly Detection
-          </span>
-        </div>
+        ))}
       </nav>
 
-      <main className="px-4 py-4 md:px-6 md:py-16">
-        <div>
+      <main className="px-4 py-8 md:px-12 md:py-16">
+        <div className="max-w-7xl mx-auto">
           <div className={"mb-12 md:mb-24"}>
-            <h1 className="text-4xl leading-tight font-bold text-black sm:text-5xl sm:leading-20 md:text-7xl md:leading-32 xl:text-8xl">
-              <div>Monitor Your Home's</div>
+            <h1 className="text-3xl font-black leading-tight text-slate-900 sm:text-5xl md:text-7xl">
+              Monitor Your <br />
+              Home's <span className="text-indigo-600">Solar Energy</span>
+            </h1>
+            <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-6xl md:text-7xl lg:text-8xl leading-[1.1]">
               <div className="flex flex-row items-center gap-4 sm:gap-8">
                 <span>Solar Energy</span>
                 <div className="relative">
