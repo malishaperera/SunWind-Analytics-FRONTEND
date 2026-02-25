@@ -1,4 +1,5 @@
-import { useState } from "react";
+import {useState} from "react";
+
 const EnergyProductionCard = (props) => {
 
   const [isSelected, setIsSelected] = useState(false);
@@ -9,11 +10,11 @@ const EnergyProductionCard = (props) => {
 
   return (
     <button
-      className={`block cursor-pointer ${
-        isSelected ? "outline-2 outline-offset-2 outline-blue-600" : ""
+      className={`w-full flex flex-col cursor-pointer ${
+        isSelected ? "ring-2 ring-blue-600 ring-offset-2" : ""
       } relative border ${
         props.hasAnomaly ? "border-red-500" : "border-gray-300"
-      } rounded-lg transition-all hover:shadow-md`}
+      } rounded-lg transition-all hover:shadow-md bg-white`}
       onClick={handleClick}
       title={props.hasAnomaly ? props.anomalyReason : "Normal operation"}
     >
@@ -30,7 +31,7 @@ const EnergyProductionCard = (props) => {
       </div>
       <div className="p-6 pt-2 flex flex-col items-center">
         <span
-          className={`block mb-1 text-3xl font-bold ${
+          className={`block mb-1 text-2xl lg:text-3xl font-bold truncate ${
             props.hasAnomaly ? "text-red-600" : "text-blue-600"
           }`}
         >
@@ -48,11 +49,12 @@ const EnergyProductionCard = (props) => {
 
       {/* Detailed reason shown on hover/click */}
       {isSelected && props.hasAnomaly && props.anomalyReason && (
-        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-64 p-3 bg-gray-900 text-white text-xs rounded shadow-lg z-10">
-          <div className="font-semibold mb-1">Why is this an anomaly?</div>
-          <div>{props.anomalyReason}</div>
-          <div className="absolute top-full left-1/2 transform -translate-x-1/2 -mt-1 border-4 border-transparent border-t-gray-900"></div>
-        </div>
+          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-[90%] sm:w-64 p-3 bg-gray-900 text-white text-xs rounded shadow-xl z-30">
+            <div className="font-semibold mb-1">Why is this an anomaly?</div>
+            <div className="leading-relaxed">{props.anomalyReason}</div>
+            {/* Arrow - hidden on very small screens to save space */}
+            <div className="hidden sm:block absolute top-full left-1/2 transform -translate-x-1/2 -mt-1 border-4 border-transparent border-t-gray-900"></div>
+          </div>
       )}
     </button>
   );

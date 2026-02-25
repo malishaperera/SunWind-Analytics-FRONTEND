@@ -24,7 +24,7 @@ const SolarEnergyProduction = () => {
 
     return (
         <>
-            {solarUnit?._id && (
+            {solarUnit && (
                 <DataCard solarUnitId={solarUnit._id} />
             )}
         </>

@@ -23,24 +23,25 @@ const EnergyProductionSection = ({ solarUnitId }) => {
         limit: 7,
       });
 
-  if (isLoading || isError || !data) {
-    return null;
-  }
+    if (isLoading) return <div>Loading energy data...</div>;
+    if (isError) return <div>Error fetching energy records</div>;
+    if (!data) return <div>No data returned</div>;
 
   // Detect anomalies
   const dataWithAnomalies = detectAnomalies(data, "windowAverage", {
     windowThresholdPercent: 40,
   });
 
+
   // Transform data for UI
-  const energyProductionData = dataWithAnomalies.map((el) => ({
-    day: format(toDate(el._id.date), "EEE"),
-    date: format(toDate(el._id.date), "MMM d"),
-    production: el.totalEnergy,
-    hasAnomaly: el.hasAnomaly,
-    anomalyType: el.anomalyType,
-    anomalyReason: el.anomalyReason,
-  }));
+    const energyProductionData = dataWithAnomalies.map((el) => ({
+        day: format(toDate(el._id.date), "EEE"),
+        date: format(toDate(el._id.date), "MMM d"),
+        production: parseFloat(el.totalEnergy.toFixed(2)),
+        hasAnomaly: el.hasAnomaly,
+        anomalyType: el.anomalyType,
+        anomalyReason: el.anomalyReason,
+    }))
 
   // Filter based on selected tab
   const filteredData =
@@ -51,7 +52,7 @@ const EnergyProductionSection = ({ solarUnitId }) => {
   return (
       <Card className="rounded-md p-6 mb-8">
         {/* Tabs */}
-        <div className="mb-4 flex items-center gap-x-4">
+          <div className="mb-4 flex items-center gap-x-4 overflow-x-auto pb-2 sm:pb-0">
           {tabs.map((tab) => (
               <EnergyTab key={tab.value} tab={tab} />
           ))}
