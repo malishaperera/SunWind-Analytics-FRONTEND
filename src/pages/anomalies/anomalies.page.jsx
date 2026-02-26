@@ -18,7 +18,7 @@ const AnomaliesPage = () => {
     }
 
     return (
-        <main className="p-6 bg-gray-50 min-h-screen">
+        <div className="mx-auto w-full max-w-[1400px] px-6 pt-6 pb-10">
             <div className="mb-8">
                 <h1 className="text-3xl font-bold text-gray-900">
                     {user?.firstName}'s House
@@ -32,7 +32,7 @@ const AnomaliesPage = () => {
                 <AnomalyTrendChart />
             </div>
             <AnomalyList anomalies={anomalies} />
-        </main>
+                </div>
     );
 };
 

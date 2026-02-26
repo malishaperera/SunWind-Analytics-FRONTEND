@@ -8,12 +8,15 @@ const Navigation = () => {
     <nav className={"px-12 py-6 flex justify-between items-center"}>
 
       <Link to="/" className={"flex items-center gap-3"}>
-        <div className="w-15 h-15 rounded-full bg-indigo-100 flex justify-center items-center">
-          <img
-              src={logo}
-              alt="SunWind Analytics Logo"
-              className="w-28 h-28 object-contai"
-          />
+        <div className="relative">
+          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-orange-400 to-sky-400 blur-md opacity-30 group-hover:opacity-60 transition-opacity duration-300" />
+          <div className="relative w-14 h-14 rounded-full bg-white shadow-md ring-1 ring-slate-200 overflow-hidden flex items-center justify-center">
+            <img
+                src={logo}
+                alt="SunWind Analytics Logo"
+                className="w-20 h-20 object-contain"
+            />
+          </div>
         </div>
         <span className="font-[Inter] text-xl font-semibold">
           <span className="text-orange-500">Sun</span>

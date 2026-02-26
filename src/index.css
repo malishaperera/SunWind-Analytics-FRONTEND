@@ -124,19 +124,13 @@ html, body {
   padding: 0;
   overflow-x: hidden;
 }
+
 html {
-  overflow-y: scroll;
-}
-
-fff{
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
-
-html, body {
-  /*overscroll-behavior: none;*/
+  overflow-y: auto;
+  overscroll-behavior-y: none;
   scroll-behavior: smooth;
 }
 
-
+#root {
+  overflow-x: hidden;
+}
