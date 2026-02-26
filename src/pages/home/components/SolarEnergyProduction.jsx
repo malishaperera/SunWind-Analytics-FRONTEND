@@ -10,6 +10,8 @@ const SolarEnergyProduction = () => {
             skip: !isLoaded || !isSignedIn,
         });
 
+    console.log(solarUnit);
+
     if (isLoading) {
         return (
             <div>is Loading ...</div>

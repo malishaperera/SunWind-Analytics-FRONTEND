@@ -1,19 +1,19 @@
 import DataChart from "@/pages/dashboard/components/DataChart/DataChart.jsx";
 import { useUser } from "@clerk/clerk-react";
 import {
-  useGetCurrentWeatherQuery,
-  useGetSolarUnitForUserQuery,
+    useGetAllSolarUnitsForUserQuery,
+    useGetCurrentWeatherQuery,
 } from "@/lib/redux/query.js";
 import KpiCards from "@/pages/dashboard/components/Overview/KpiCards.jsx";
 import SolarOverviewCard from "@/pages/dashboard/components/Overview/SolarOverviewCard.jsx";
 import PowerFlowCard from "@/pages/dashboard/components/Overview/PowerFlowCard.jsx";
-import SolarPanelInfoCard from "@/pages/dashboard/components/Overview/SolarPanelInfoCard.jsx";
 import { SidebarTrigger } from "@/components/ui/sidebar.jsx";
+
 
 const DashboardPage = () => {
   const { user, isLoaded } = useUser();
 
-  const solarUnitQuery = useGetSolarUnitForUserQuery(undefined, {
+  const solarUnitQuery = useGetAllSolarUnitsForUserQuery(undefined, {
     skip: !isLoaded,
   });
 
@@ -26,6 +26,7 @@ const DashboardPage = () => {
   const { data: weather, isLoading: isWeatherLoading } = weatherQuery;
 
   const isPageLoading = isLoading || isWeatherLoading;
+
 
   if (isPageLoading)
     return (
@@ -56,7 +57,7 @@ const DashboardPage = () => {
         <KpiCards />
         <div className="grid grid-cols-1 lg:grid-cols-1 gap-6 mt-8">
           <div className="lg:col-span-2 min-w-0">
-            <DataChart solarUnitId={solarUnit._id} />
+              <DataChart/>
           </div>
           {/*<div className="w-full">*/}
           {/*  <SolarPanelInfoCard />*/}
