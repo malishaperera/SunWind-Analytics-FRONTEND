@@ -25,6 +25,7 @@ import AnomaliesPage from "@/pages/anomalies/anomalies.page.jsx";
 import InvoicesPage from "@/pages/invoices/InvoicesPage.jsx";
 import InvoicePaymentPage from "@/pages/invoices/Payment.jsx";
 import InvoiceCompletePage from "@/pages/invoices/Invoice-complete.page.jsx";
+import User from "@/pages/user/user.jsx";
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
@@ -49,6 +50,7 @@ createRoot(document.getElementById("root")).render(
                   <Route path="/dashboard" element={<DashboardPage />} />
                   <Route path="/dashboard/anomalies" element={<AnomaliesPage />} />
                   <Route path="/dashboard/invoices" element={<InvoicesPage />} />
+                  <Route path="/dashboard/user" element={<User />} />
                   <Route path="/dashboard/invoices/:id/pay" element={<InvoicePaymentPage />}/>
                   <Route path="/dashboard/invoices/complete" element={<InvoiceCompletePage />}/>
                 </Route>

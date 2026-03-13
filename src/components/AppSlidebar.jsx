@@ -3,6 +3,7 @@ import {
     TriangleAlert,
     ChartLine,
     Users,
+    Ban
 } from "lucide-react";
 
 import {
@@ -22,8 +23,8 @@ import { Sun } from "lucide-react";
 const items = [
     { title: "Dashboard", url: "/dashboard", icon: LayoutDashboard },
     { title: "Anomaly", url: "/dashboard/anomalies", icon: TriangleAlert },
-    { title: "Analytics", url: "/dashboard/analytics", icon: ChartLine },
-    { title: "Users", url: "/dashboard/users", icon: Users },
+    { title: "Analytics", url: "/dashboard/analytics", icon: ChartLine, disabled: true },
+    { title: "Users", url: "/dashboard/user", icon: Users },
     { title: "Invoices", url: "/dashboard/invoices", icon: ChartLine },
 ];
 
@@ -53,6 +54,26 @@ export function AppSidebar() {
                             {items.map((item) => {
                                 const Icon = item.icon;
                                 const isActive = location.pathname === item.url;
+
+
+                                if (item.disabled) {
+                                    return (
+                                        <SidebarMenuItem key={item.url}>
+                                            <SidebarMenuButton
+                                                className="gap-4 py-3 text-base rounded-xl text-slate-400 cursor-not-allowed"
+                                                onClick={() => alert("🚧 This feature is coming soon")}
+                                            >
+                                                <Icon
+                                                    size={22}
+                                                    className={isActive ? "text-blue-600" : "text-slate-500"}
+                                                />
+                                                <span>{item.title}</span>
+                                                <span className="ml-auto text-xs bg-slate-200 px-2 py-0.5 rounded">Soon</span>
+                                            </SidebarMenuButton>
+                                        </SidebarMenuItem>
+                                    );
+                                }
+
 
                                 return (
                                     <SidebarMenuItem key={item.url}>
