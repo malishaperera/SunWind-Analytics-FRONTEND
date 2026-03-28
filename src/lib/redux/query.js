@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-// const baseUrl = "http://localhost:3000/api";
-const baseUrl = import.meta.env.VITE_API_BASE_URL;
+const baseUrl = "http://localhost:3000/api";
+// const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
 export const api = createApi({
     reducerPath: "api",
@@ -88,6 +88,18 @@ export const api = createApi({
                     `/payments/session-status?session_id=${sessionId}`,
             }),
 
+            getUserMe: build.query({
+                query: () => `/users/me`,
+            }),
+
+            updateUserMe: build.mutation({
+                query: (data) => ({
+                    url: `/users/me`,
+                    method: "PUT",
+                    body: data,
+                }),
+            }),
+
         }),
     })
 
@@ -108,5 +120,7 @@ export const {
     useCreateCheckoutSessionMutation,
     useGetInvoicesQuery,
     useGetInvoiceByIdQuery,
+    useGetUserMeQuery,
+    useUpdateUserMeMutation,
     useGetSessionStatusQuery,
 } = api;

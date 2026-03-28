@@ -73,8 +73,6 @@ export function AppSidebar() {
                                         </SidebarMenuItem>
                                     );
                                 }
-
-
                                 return (
                                     <SidebarMenuItem key={item.url}>
                                         <SidebarMenuButton
